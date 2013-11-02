@@ -1,4 +1,6 @@
 /*
  *= require_self
+ *= require reset.css
+ *= require onepage-scroll
  *= require_tree .
  */

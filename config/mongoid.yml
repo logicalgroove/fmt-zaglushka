@@ -1,0 +1,28 @@
+development:
+  sessions:
+    default:
+      username: mongo
+      password: timetoquery
+      database: fmt_zaglushka_development
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:
+test:
+  sessions:
+    default:
+      database: fmt_zaglushka_test<%= ENV['TEST_ENV_NUMBER'] %>
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+production:
+  sessions:
+    default:
+      database: fmt_zaglushka_production
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:

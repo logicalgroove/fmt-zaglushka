@@ -1,7 +1,20 @@
+$ ->
+  $(".main").onepage_scroll
+    sectionContainer: "section"
+    easing: "ease"
+    animationTime: 1000
+
 initialize = ->
   mapOptions =
-    zoom: 8
-    center: new google.maps.LatLng(-34.397, 150.644)
+    zoom: 3
+    center: new google.maps.LatLng(0, 0)
+    disableDefaultUI: true
+    scrollwheel: false
+    navigationControl: false
+    mapTypeControl: false
+    scaleControl: false
+    draggable: false
+    disableDoubleClickZoom: true
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
