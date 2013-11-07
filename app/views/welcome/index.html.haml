@@ -1,5 +1,12 @@
 .main
   %section.page_1
-    %h1 Самый простой способ обмениваться впечатлениями о путешествиях
+    .logo
+    .container
+      %h1 Самый простой способ обмениваться впечатлениями о путешествиях
+      = link_to 'Запросить инвайт', '#', :class => 'btn animated lightSpeedIn invite_me'
+  %section
+    %h1 Получить инвайт
+    = render 'users/form'
+
   %section
     #map-canvas

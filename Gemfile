@@ -2,7 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 gem 'mongoid'
+gem 'haml'
 gem 'jquery-rails'
+gem 'animate-rails'
+gem 'awesome_print'
+gem 'rubyzip', '~> 0.9.9'
+gem 'simple_form'
+gem 'decent_exposure'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -20,10 +26,11 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'mongoid-rspec'
-  gem 'cucumber-rails'
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'cucumber-rails', '1.3.0', :require => false
+  gem 'cucumber', '1.3.3'
+  gem 'database_cleaner'
+  gem 'capybara', '1.1.2'
+  gem 'selenium-webdriver', '2.32.0'
 end
 

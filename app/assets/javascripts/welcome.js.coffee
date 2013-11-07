@@ -4,6 +4,10 @@ $ ->
     easing: "ease"
     animationTime: 1000
 
+  $('.invite_me').click ->
+    $('.main').moveTo(2)
+
+
 initialize = ->
   mapOptions =
     zoom: 3

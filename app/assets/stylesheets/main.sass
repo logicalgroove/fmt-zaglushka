@@ -1,28 +1,54 @@
+$maincolor: #5d9fef
+
 html, body, #map-canvas
   height: 100%
   margin: 0px
   padding: 0px
 
 body
-  background: #5d9fef
-  color: #fff
-  font-family: 'Roboto', sans-serif
+  background: $maincolor
+  color: white
+  font-family: 'pf_handbook_extrathin', sans-serif
   font-weight: 400
 
+a
+  color: white
+
+@font-face
+  font-family: 'pf_handbook_extrathin'
+  src: url('pfhandbookpro-extrathin-webfont.eot')
+  src: url('pfhandbookpro-extrathin-webfont.eot?#iefix') format('embedded-opentype'), url('pfhandbookpro-extrathin-webfont.woff') format('woff'), url('pfhandbookpro-extrathin-webfont.ttf') format('truetype'), url('pfhandbookpro-extrathin-webfont.svg#pf_handbook_proextrathin') format('svg')
+  font-weight: normal
+  font-style: normal
 
 .logo
-  background: image-url('fmt_logo.jpg') no-repeat
-  width: 796px
-  height: 370px
+  background: image-url('fmt-logo.png') no-repeat
+  width: 614px
+  height: 321px
   margin: 0 auto
 
 .page_1
   background: image-url('bg1.jpg') no-repeat center
-  h1
-    font-size: 50px
-    margin-top: 200px
+  .container
     margin-left: 120px
-    width: 550px
+    h1
+      font-size: 50px
+      line-height: 50px
+      margin-bottom: 40px
+      width: 550px
+
+.btn
+  border: 1px solid white
+  background: transparent
+  font-size: 38px
+  padding: 2px 20px 6px
+  text-decoration: none
+  -webkit-border-radius: 8px
+  -moz-border-radius: 8px
+  border-radius: 8px
+  &:hover
+    background: white
+    color: $maincolor
 
 .city_input_dialog
   position: absolute

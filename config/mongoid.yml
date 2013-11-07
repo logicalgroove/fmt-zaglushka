@@ -1,8 +1,6 @@
 development:
   sessions:
     default:
-      username: mongo
-      password: timetoquery
       database: fmt_zaglushka_development
       hosts:
         - localhost:27017
