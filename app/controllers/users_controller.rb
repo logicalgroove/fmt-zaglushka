@@ -3,8 +3,14 @@ class UsersController < ApplicationController
   expose(:users)
   expose(:city) {City.where(name: params[:city_name]).first}
 
-  def create
+  def show
+    gon.cities = []
+    user.cities.each do |city|
+      gon.cities.push(city.name)
+    end
+  end
 
+  def create
     respond_to do |format|
       if user.save
         format.html { redirect_to user, notice: 'Спасибо.' }

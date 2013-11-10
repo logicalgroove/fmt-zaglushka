@@ -9,6 +9,7 @@ gem 'awesome_print'
 gem 'rubyzip', '~> 0.9.9'
 gem 'simple_form'
 gem 'decent_exposure'
+gem 'gon', '4.1.1'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

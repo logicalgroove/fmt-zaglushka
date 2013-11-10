@@ -1,14 +1,17 @@
-%p#notice= notice
+.over_map
+  %p#notice= notice
 
-%p
-  %b Email:
-  = user.email
-
-
-%h1 Дабавить город
+  %p
+    %b Email:
+    = user.email
 
 
-= render 'city_form'
+  %h1 Дабавить город
 
-%ul#cities
-  = render user.cities
+
+  = render 'city_form'
+
+  %ul#cities
+    = render user.cities
+
+#map-canvas

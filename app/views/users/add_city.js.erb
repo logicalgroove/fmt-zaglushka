@@ -1,1 +1,3 @@
 $('ul#cities').append('<%= escape_javascript(render city) %>');
+$('#city_name').val('')
+show_city_in_maps('<%= city.name %>')
