@@ -21,7 +21,7 @@ Then /^take a screenshot$/ do
   screenshot_and_save_page
 end
 
-When /^I wait for the ajax request to finish$/ do
+When /^I wait for ajax request to finish$/ do
   wait_for_ajax
 end
 

@@ -5,11 +5,13 @@
 # files.
 
 require 'cucumber/rails'
+require 'capybara-screenshot/cucumber'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
 Capybara.default_selector = :css
+Capybara.save_and_open_page_path = "public/screenshots/"
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
@@ -60,4 +62,5 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-Capybara.current_driver= :selenium
+#Capybara.current_driver= :selenium
+Capybara.javascript_driver = :webkit

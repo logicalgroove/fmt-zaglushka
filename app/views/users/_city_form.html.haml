@@ -1,0 +1,6 @@
+= simple_form_for user, url: add_city_user_path(user), remote: true do |f|
+  .field
+    = label_tag :city_name, 'Город'
+    = text_field_tag :city_name
+  .actions
+    = f.submit 'Сохранить'

@@ -31,6 +31,8 @@ group :test do
   gem 'cucumber', '1.3.3'
   gem 'database_cleaner'
   gem 'capybara', '1.1.2'
-  gem 'selenium-webdriver', '2.32.0'
+  #gem 'selenium-webdriver', '2.32.0'
+  gem 'capybara-screenshot'
+  gem 'capybara-webkit'
 end
 

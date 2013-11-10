@@ -1,0 +1,6 @@
+= simple_form_for city, remote: true do |f|
+  .field
+    = f.label :name, label: 'Города'
+    = f.text_field :name
+  .actions
+    = f.submit 'Сохранить'
