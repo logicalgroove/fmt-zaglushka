@@ -8,7 +8,7 @@ Feature: User enter email
     When I visit home page
     When I click "Запросить инвайт"
     And I wait for 3 seconds
-    And I fill in "Email" with "user@mail.com"
+    And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
     Then I should see "Спасибо"
 

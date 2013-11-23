@@ -1,5 +1,6 @@
 = simple_form_for user do |f|
   .field
+    = f.label :email, label: 'Твой email:'
     = f.text_field :email, placeholder: 'mail@example.com'
   .actions
     = f.submit 'Получить инвайт'
