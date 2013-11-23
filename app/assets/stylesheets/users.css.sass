@@ -1,4 +1,4 @@
-#map-canvas
+#map-canvas, #map-canvas-main
   position: absolute
   top: 0
   bottom: 0
@@ -12,3 +12,41 @@
 .over_map
   position: relative
   z-index: 100
+  width: 250px
+  &.main
+    width: auto
+
+#new_user
+  margin: 0 auto
+  width: 620px
+  input
+    font-family: 'pf_handbook_extrathin', sans-serif
+  .field
+    float: left
+    input
+      background: rgba(0, 0, 0, 0.2)
+      border: 2px solid #fff
+      font-size: 30px
+      color: #fff
+      padding: 10px
+      font-family: 'pf_handbook_extrathin', sans-serif
+      -webkit-border-top-left-radius: 5px
+      -webkit-border-bottom-left-radius: 5px
+      -moz-border-radius-topleft: 5px
+      -moz-border-radius-bottomleft: 5px
+      border-top-left-radius: 5px
+      border-bottom-left-radius: 5px
+  .actions
+    float: left
+    input
+      background: #fff
+      border: 1px solid #fff
+      font-size: 30px
+      padding: 10px
+      cursor: pointer
+      -webkit-border-top-right-radius: 5px
+      -webkit-border-bottom-right-radius: 5px
+      -moz-border-radius-topright: 5px
+      -moz-border-radius-bottomright: 5px
+      border-top-right-radius: 5px
+      border-bottom-right-radius: 5px
