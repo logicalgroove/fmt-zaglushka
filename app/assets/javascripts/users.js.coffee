@@ -21,6 +21,7 @@ $ ->
     map.setOptions styles: styles
 
   root.initializeUserMap = ->
+    geocoder = new google.maps.Geocoder()
     mapOptions =
       zoom: 3
       center: new google.maps.LatLng(36, -10)
