@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   expose(:user)
   expose(:users)
-  expose(:city) {City.where(name: params[:city_name]).first}
+  expose(:city) {City.find_or_create_by(name: params[:city_name])}
 
   def show
     gon.cities = []

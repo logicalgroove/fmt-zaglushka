@@ -1,4 +1,10 @@
 $ ->
+  options =
+    types: ["(cities)"]
+
+  input = document.getElementById("city_name")
+  autocomplete = new google.maps.places.Autocomplete(input, options)
+
   geocoder = undefined
   map = undefined
 
@@ -76,6 +82,9 @@ $ ->
     initializeUserMap()
     for city in gon.cities
       show_city_in_maps(city)
+      setInterval (->
+      ), 2000
+
 
   if $('#map-canvas-main').length > 0
     #google.maps.event.addDomListener window, "load", initialize
