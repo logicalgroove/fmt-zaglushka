@@ -3,8 +3,15 @@ class CitiesController < ApplicationController
   expose(:cities)
 
   def create
+    ap params
     respond_to do |format|
-      if city.save
+      user = User.find(params[:user_id]) if params[:user_id]
+      city = City.find_or_create_by(name: params[:city][:name],
+                                    latitude: params[:city][:latitude],
+                                    longitude: params[:city][:longitude],
+                                    g_id: params[:city][:g_id])
+      city.users << user
+      if city
         format.js
       else
         format.json { render json: city.errors, status: :unprocessable_entity }
