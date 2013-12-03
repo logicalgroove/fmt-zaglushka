@@ -28,9 +28,15 @@ When /^I wait for "(.*?)" will be visible$/ do |css|
   end
 end
 
+When /^I press return on "(.*?)" field$/ do |field|
+  input = find("##{field}")
+  input.base.invoke('keypress', false, false, false, false, 13, 0);
+end
+
 Then /^I should be redirected to (?:root path|dashboard)$/ do
   current_path.should eql root_path
 end
+
 Then /^I should be redirected to find project page$/ do
   current_path.should eql project_templates_path
 end

@@ -1,6 +1,9 @@
 = simple_form_for city, remote: true do |f|
   .field
-    = f.label :name, label: 'Города'
-    = f.text_field :name
-  .actions
-    = f.submit 'Сохранить'
+    = label_tag :city_name_auto, 'Город'
+    = text_field_tag :city_name_auto
+  = f.input :name, as: :hidden
+  = f.input :latitude, as: :hidden
+  = f.input :longitude, as: :hidden
+  = f.input :g_id, as: :hidden
+  = hidden_field_tag :user_id, user.id if user

@@ -2,5 +2,7 @@
   .field
     = label_tag :city_name, 'Город'
     = text_field_tag :city_name
+    = hidden_field_tag :city_latitude
+    = hidden_field_tag :city_longitude
   .actions
     = f.submit 'Сохранить'

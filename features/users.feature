@@ -1,8 +1,5 @@
 Feature: User enter email
 
-  Background:
-    Given there are some cities in the database
-
   @javascript
   Scenario: User email is stored
     When I visit home page
@@ -16,7 +13,11 @@ Feature: User enter email
   Scenario: User add a city
     Given I exist as a user
     When I visit my user page
-    And I fill in "Город" with "Barcelona"
-    And I press "Сохранить"
+    And I search google maps for "Barcelona" city
     And I wait for ajax request to finish
     Then this user should have "Barcelona" as travelled cities
+    And I should see the following city in the database:
+    | name      | Barcelona |
+    | latitude  | 11        |
+    | longitude | 22        |
+    | g_id      | 33        |
