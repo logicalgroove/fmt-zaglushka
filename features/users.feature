@@ -19,4 +19,8 @@ Feature: User enter email
     And I fill in "Город" with "Barcelona"
     And I press "Сохранить"
     And I wait for ajax request to finish
+    And I fill in "Город" with "New York"
+    And I press "Сохранить"
+    And I wait for ajax request to finish
     Then this user should have "Barcelona" as travelled cities
+    And this user should see "2" cities as travelled cities

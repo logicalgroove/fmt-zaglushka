@@ -13,3 +13,8 @@ Then /^this user should have "(.*?)" as travelled cities$/ do |city_name|
   @user.reload
   @user.cities.should include(city)
 end
+
+Then /^this user should see "(.*?)" cities as travelled cities$/ do |count|
+  @user.reload
+  @user.city_count.should == count.to_s
+end
