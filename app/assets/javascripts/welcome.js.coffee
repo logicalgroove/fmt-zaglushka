@@ -31,8 +31,7 @@ $ ->
         city_counter = 0
         add_city = ->
           if city_counter < cities.length
-            cities[city_counter].name
-            show_city_in_maps(cities[city_counter])
+            show_city_in_maps(cities[city_counter].name, cities[city_counter].latitude, cities[city_counter].longitude)
             city_counter++
           else
             clearInterval city_timer

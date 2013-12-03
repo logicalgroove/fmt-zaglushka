@@ -3,7 +3,6 @@ class CitiesController < ApplicationController
   expose(:cities)
 
   def create
-    ap params
     respond_to do |format|
       user = User.find(params[:user_id]) if params[:user_id]
       city = City.find_or_create_by(name: params[:city][:name],

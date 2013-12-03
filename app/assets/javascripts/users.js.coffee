@@ -2,20 +2,6 @@ $ ->
   geocoder = undefined
   map = undefined
 
-  options =
-    types: ["(cities)"]
-
-  input = document.getElementById("city_name_auto")
-  autocomplete = new google.maps.places.Autocomplete(input, options)
-
-  google.maps.event.addListener autocomplete, 'place_changed', ->
-    place = autocomplete.getPlace()
-    $.ajax
-      context: this
-      url: '/cities'
-      type: 'POST'
-      data: {city: {name: place.name, latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), g_id: place.id}, user_id: gon.user_id}
-
   root.initializeMainMap = ->
     geocoder = new google.maps.Geocoder()
     mainMapOptions =
@@ -35,6 +21,20 @@ $ ->
     map.setOptions styles: styles
 
   root.initializeUserMap = ->
+    options =
+      types: ["(cities)"]
+
+    input = document.getElementById("city_name_auto")
+    autocomplete = new google.maps.places.Autocomplete(input, options)
+
+    google.maps.event.addListener autocomplete, 'place_changed', ->
+      place = autocomplete.getPlace()
+      $.ajax
+        context: this
+        url: '/cities'
+        type: 'POST'
+        data: {city: {name: place.name, latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), g_id: place.id}, user_id: gon.user_id}
+
     geocoder = new google.maps.Geocoder()
     mapOptions =
       zoom: 3
