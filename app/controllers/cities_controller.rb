@@ -1,10 +1,10 @@
 class CitiesController < ApplicationController
   expose(:city)
   expose(:cities)
+  expose(:user) {User.find(params[:user_id]) if params[:user_id]}
 
   def create
     respond_to do |format|
-      user = User.find(params[:user_id]) if params[:user_id]
       city = City.find_or_create_by(name: params[:city][:name],
                                     latitude: params[:city][:latitude],
                                     longitude: params[:city][:longitude],

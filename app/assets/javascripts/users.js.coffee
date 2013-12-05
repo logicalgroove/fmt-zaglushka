@@ -27,6 +27,10 @@ $ ->
     input = document.getElementById("city_name_auto")
     autocomplete = new google.maps.places.Autocomplete(input, options)
 
+
+    root.citiesCount = $('#cities > li').length
+    console.log "#{citiesCount}"
+
     google.maps.event.addListener autocomplete, 'place_changed', ->
       place = autocomplete.getPlace()
       $.ajax

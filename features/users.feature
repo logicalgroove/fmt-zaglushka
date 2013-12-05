@@ -24,3 +24,13 @@ Feature: User enter email
     | latitude  | 11        |
     | longitude | 22        |
     | g_id      | 33        |
+
+  @javascript
+  Scenario: User should see unique travelled cities
+    Given I exist as a user
+    When I visit my user page
+    And I search google maps for "Barcelona" city
+    And I wait for ajax request to finish
+    And I search google maps for "Barcelona" city
+    And I wait for ajax request to finish
+    Then this user should see "1" cities as travelled cities
