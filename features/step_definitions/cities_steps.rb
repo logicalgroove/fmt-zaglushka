@@ -17,3 +17,14 @@ Then /^this user should have "(.*?)" as travelled cities$/ do |city_name|
   @user.reload
   @user.cities.should include(city)
 end
+
+When(/^should be only one "(.*?)" in database$/) do |city_name|
+  city = City.find_by(name: city_name)
+  City.count.should eq(1)
+end
+
+When(/^I should have "(.*?)" as unique city in my travelled cities$/) do |city_name|
+  @user.reload
+  @user.cities.where(:name =~ /#{city_name}/).count.should eq(1)
+end
+

@@ -21,3 +21,16 @@ Feature: User enter email
     | latitude  | 11        |
     | longitude | 22        |
     | g_id      | 33        |
+
+  @javascript
+  Scenario: City should be uniq in the db
+    Given I exist as a user
+    When I visit my user page
+    And I search google maps for "Barcelona" city
+    And I wait for ajax request to finish
+    And I search google maps for "Barcelona" city
+    And I wait for ajax request to finish
+    And should be only one "Barcelona" in database
+    And I should have "Barcelona" as unique city in my travelled cities
+
+
