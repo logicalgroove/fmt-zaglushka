@@ -28,3 +28,7 @@ When(/^I should have "(.*?)" as unique city in my travelled cities$/) do |city_n
   @user.cities.where(:name =~ /#{city_name}/).count.should eq(1)
 end
 
+Then /^this user should see "(.*?)" cities as travelled cities$/ do |count|
+  @user.reload
+  @user.city_count.should == count.to_s
+end
