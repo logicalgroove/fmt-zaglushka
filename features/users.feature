@@ -26,11 +26,13 @@ Feature: User enter email
     | g_id      | 33        |
 
   @javascript
-  Scenario: User should see unique travelled cities
+  Scenario: City should be unique in the database
     Given I exist as a user
     When I visit my user page
     And I search google maps for "Barcelona" city
     And I wait for ajax request to finish
     And I search google maps for "Barcelona" city
     And I wait for ajax request to finish
-    Then this user should see "1" cities as travelled cities
+    And should be only one "Barcelona" in database
+    And I should have "Barcelona" as unique city in my travelled cities
+
