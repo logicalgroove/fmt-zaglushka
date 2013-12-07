@@ -39,7 +39,6 @@ class UsersController < ApplicationController
   def add_city
     respond_to do |format|
       if city
-        ap city
         user.cities << city
         user.save
         format.js
