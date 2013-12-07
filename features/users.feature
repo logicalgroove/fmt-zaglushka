@@ -15,9 +15,22 @@ Feature: User enter email
     When I visit my user page
     And I search google maps for "Barcelona" city
     And I wait for ajax request to finish
+    And I search google maps for "Odessa" city
+    And I wait for ajax request to finish
+    Then this user should see "2" cities as travelled cities
     Then this user should have "Barcelona" as travelled cities
     And I should see the following city in the database:
     | name      | Barcelona |
     | latitude  | 11        |
     | longitude | 22        |
     | g_id      | 33        |
+
+  @javascript
+  Scenario: User should see unique travelled cities
+    Given I exist as a user
+    When I visit my user page
+    And I search google maps for "Barcelona" city
+    And I wait for ajax request to finish
+    And I search google maps for "Barcelona" city
+    And I wait for ajax request to finish
+    Then this user should see "1" cities as travelled cities
