@@ -3,44 +3,4 @@
     .logo
     .container
       %h1 Самый простой способ обмениваться впечатлениями о путешествиях
-      = link_to 'Запросить инвайт', '#', :class => 'btn animated lightSpeedIn invite_me'
 
-  %section.page_2
-    .header
-      .logo-small.left
-      .right
-        = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me right'
-      .clear
-    %h1.align-center Найди
-    %h2.align-center Самые интересные места по мнению твоих друзей
-    %p.align-center
-      %span.icon.food
-      %span.icon.stay
-      %span.icon.see
-      %span.icon.walk
-
-  %section.page_3
-    .header
-      .logo-small.left
-      .right
-        = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me right'
-      .clear
-    %p.align-center
-      %span.icon.talk
-    %h1.align-center Расскажи
-    %h2.align-center О собственном опыте друзьям и храни свои заметки путешествий
-
-  %section.page_4
-    .over_map
-      .header
-        .logo-small.left
-        .clear
-      .text_container
-        %h1.align-center Уже скоро!
-        %h2.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
-        %p.align-center
-          = link_to 'Запросить инвайт', '#', :class => 'btn btn-large invite_final'
-      .email_form
-        = render 'users/form'
-
-    #map-canvas-main
