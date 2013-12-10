@@ -13,6 +13,7 @@ gem 'decent_exposure'
 gem 'gon', '4.1.1'
 gem 'execjs'
 gem 'therubyracer'
+gem 'moped'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

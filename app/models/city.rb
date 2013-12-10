@@ -6,5 +6,7 @@ class City
   field :g_id, type: String
 
   has_and_belongs_to_many :users
+  belongs_to :country
+
   before_destroy { users.clear }
 end

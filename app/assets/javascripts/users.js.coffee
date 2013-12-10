@@ -29,11 +29,16 @@ $ ->
 
     google.maps.event.addListener autocomplete, 'place_changed', ->
       place = autocomplete.getPlace()
+      country = ''
+      for addr in place.address_components
+        for type in addr.types
+          if type == 'country'
+            country = addr.long_name
       $.ajax
         context: this
         url: '/cities'
         type: 'POST'
-        data: {city: {name: place.name, latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), g_id: place.id}, user_id: gon.user_id}
+        data: {city: {name: place.name, latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), g_id: place.id, country: country}, user_id: gon.user_id}
 
     geocoder = new google.maps.Geocoder()
     mapOptions =
