@@ -220,6 +220,7 @@ DEPENDENCIES
   jquery-ui-rails
   mongoid
   mongoid-rspec
+  moped
   rails (= 3.2.15)
   rspec-rails
   rubyzip (~> 0.9.9)

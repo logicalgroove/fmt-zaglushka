@@ -5,10 +5,14 @@ class CitiesController < ApplicationController
 
   def create
     respond_to do |format|
+      country = Country.find_or_initialize_by(name: params[:city][:country])
       city = City.find_or_create_by(name: params[:city][:name],
                                     latitude: params[:city][:latitude],
                                     longitude: params[:city][:longitude],
-                                    g_id: params[:city][:g_id])
+                                    g_id: params[:city][:g_id],
+                                    country_id: country.id)
+      country.cities << city
+      country.save
       city.users << user
       if city
         format.js

@@ -10,8 +10,12 @@ class User
     self.cities << city
     self.save
   end
-  
+
   def city_count
     city_ids.count.to_s
+  end
+
+  def countries_count
+    cities.group_by(&:country_id).count.to_s
   end
 end

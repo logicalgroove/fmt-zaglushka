@@ -13,9 +13,9 @@ Feature: User enter email
   Scenario: User add a city
     Given I exist as a user
     When I visit my user page
-    And I search google maps for "Barcelona" city
+    And I search google maps for "Barcelona, Spain"
     And I wait for ajax request to finish
-    And I search google maps for "Odessa" city
+    And I search google maps for "Odessa, Ukraine"
     And I wait for ajax request to finish
     Then this user should see "2" cities as travelled cities
     Then this user should have "Barcelona" as travelled cities
@@ -24,15 +24,17 @@ Feature: User enter email
     | latitude  | 11        |
     | longitude | 22        |
     | g_id      | 33        |
+    And I should see the following country in the database:
+    | name | Spain |
+
 
   @javascript
   Scenario: City should be unique in the database
     Given I exist as a user
     When I visit my user page
-    And I search google maps for "Barcelona" city
+    And I search google maps for "Barcelona, Spain"
     And I wait for ajax request to finish
-    And I search google maps for "Barcelona" city
+    And I search google maps for "Barcelona, Spain"
     And I wait for ajax request to finish
     And should be only one "Barcelona" in database
     And I should have "Barcelona" as unique city in my travelled cities
-
