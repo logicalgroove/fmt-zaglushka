@@ -17,8 +17,8 @@ Feature: User enter email
     And I wait for ajax request to finish
     And I search google maps for "Odessa, Ukraine"
     And I wait for ajax request to finish
-    Then this user should see "2" cities as travelled cities
-    Then this user should have "Barcelona" as travelled cities
+    Then I should have "2" cities as travelled cities
+    Then I should have "Barcelona" as travelled cities
     And I should see the following city in the database:
     | name      | Barcelona |
     | latitude  | 11        |
@@ -36,5 +36,8 @@ Feature: User enter email
     And I wait for ajax request to finish
     And I search google maps for "Barcelona, Spain"
     And I wait for ajax request to finish
+    And I search google maps for "Barcelona, Spain"
+    And I wait for ajax request to finish
     And should be only one "Barcelona" in database
     And I should have "Barcelona" as unique city in my travelled cities
+    And should be only one "Barcelona" on the page
