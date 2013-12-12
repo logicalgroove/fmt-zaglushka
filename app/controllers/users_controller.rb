@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   expose(:user)
   expose(:users)
-  expose(:city) {City.new}
+  #expose(:city) {City.new}
 
   def show
     gon.cities = []

@@ -14,7 +14,7 @@ And /^I search google maps for "(.*?)"$/ do |place_name|
   page.execute_script("$.ajax({type: 'POST', url: '/cities', data: {city: {name: '#{city_name}', latitude: '11', longitude: '22', g_id: '33', country: '#{country_name}'}, user_id: gon.user_id}})")
 end
 
-Then /^this user should have "(.*?)" as travelled cities$/ do |city_name|
+Then /^I should have "(.*?)" as travelled cities$/ do |city_name|
   city = City.find_by(name: city_name)
   @user.reload
   @user.cities.should include(city)
@@ -30,7 +30,11 @@ When(/^I should have "(.*?)" as unique city in my travelled cities$/) do |city_n
   @user.cities.where(:name =~ /#{city_name}/).count.should eq(1)
 end
 
-Then /^this user should see "(.*?)" cities as travelled cities$/ do |count|
+Then /^I should have "(.*?)" cities as travelled cities$/ do |count|
   @user.reload
   @user.city_count.should == count.to_s
+end
+
+Then /^should be only one "(.*?)" on the page$/ do |city_name|
+  page.all("ul#cities li").count.should eql(1)
 end

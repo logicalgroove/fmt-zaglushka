@@ -24,7 +24,8 @@ $ ->
     options =
       types: ["(cities)"]
 
-    input = document.getElementById("city_name_auto")
+
+    input = document.getElementById("city_name_auto") # if $("ul li:contains(\"city_name_auto\")").length
     autocomplete = new google.maps.places.Autocomplete(input, options)
 
     google.maps.event.addListener autocomplete, 'place_changed', ->
