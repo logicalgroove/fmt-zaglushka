@@ -12,6 +12,7 @@ class CitiesController < ApplicationController
       country.cities << city
       country.save
       city.country = country
+      city.save
       unless user.cities.include?(city)
         city.users << user
         format.js
