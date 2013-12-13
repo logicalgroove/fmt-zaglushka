@@ -39,3 +39,7 @@ Then /^should be only one "(.*?)" on the page$/ do |city_name|
   page.all("ul#cities li").count.should eql(1)
 end
 
+Then(/^I should have "(.*?)" counties as travelled counties$/) do |count|
+  @user.reload
+  @user.countries_count.should == count.to_s
+end

@@ -54,3 +54,21 @@ Feature: User enter email
     Then I should not see the following user in the database:
      | email | user.gmail.com |
     And "user_email" field should display an error
+
+
+  @javascript
+  Scenario: City should be unique in the database
+    Given I exist as a user
+    When I visit my user page
+    And I search google maps for "Barcelona, Spain"
+    And I wait for ajax request to finish
+    And I search google maps for "Odessa, Ukraine"
+    And I wait for ajax request to finish
+    And I search google maps for "Kiev, Ukraine"
+    And I wait for ajax request to finish
+    And I search google maps for "Moscow, Russia"
+    And I wait for ajax request to finish
+    And I search google maps for "Habana, Cuba"
+    And I wait for ajax request to finish
+    Then I should have "5" cities as travelled cities
+    Then I should have "4" counties as travelled counties
