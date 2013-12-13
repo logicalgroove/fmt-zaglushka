@@ -549,3 +549,6 @@ Then /^I should receive a file of type "(.*?)"/ do |type|
  page.response_headers['Content-Type'].should == type
 end
 
+Then /^"(.*?)" field should display an error/ do |field|
+  page.find_field(field)['class'].should match /wrong/
+end

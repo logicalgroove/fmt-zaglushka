@@ -41,3 +41,16 @@ Feature: User enter email
     And should be only one "Barcelona" in database
     And I should have "Barcelona" as unique city in my travelled cities
     And should be only one "Barcelona" on the page
+
+  @javascript
+  Scenario: User should get error message when enters invalid email
+    When I visit home page
+    When I click "Запросить инвайт"
+    And I wait for 3 seconds
+    And I click "Запросить инвайт"
+    And I fill in "Твой email:" with "user.gmail.com"
+    And I press "Получить инвайт"
+    And I wait for ajax request to finish
+    Then I should not see the following user in the database:
+     | email | user.gmail.com |
+    And "user_email" field should display an error

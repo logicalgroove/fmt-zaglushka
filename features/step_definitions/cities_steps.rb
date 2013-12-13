@@ -38,3 +38,4 @@ end
 Then /^should be only one "(.*?)" on the page$/ do |city_name|
   page.all("ul#cities li").count.should eql(1)
 end
+

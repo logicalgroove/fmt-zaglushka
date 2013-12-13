@@ -44,3 +44,10 @@ $ ->
   $('.invite_final').click ->
     $(this).hide()
     $('.email_form').show()
+
+  $('#new_user').submit  ->
+    regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+    email = $(this).find('#user_email')
+    unless regex.test(email.val())
+      email.addClass('wrong')
+      false
