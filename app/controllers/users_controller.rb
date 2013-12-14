@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   expose(:users)
   #expose(:city) {City.new}
 
+  rescue_from Exception, :with => :show_js_errors
+
+  def show_js_errors exception
+    ap exception
+  end
+
   def show
     gon.cities = []
     gon.user_id = user.id.to_s
@@ -14,11 +20,9 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       if user.save
-        format.html { redirect_to user, notice: 'Спасибо.' }
-        format.json { render json: user, status: :created, location: @user }
+        format.js { render js:  "window.location.replace('#{user_path(user)}')" }
       else
-        format.html { render action: "new" }
-        format.json { render json: user.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -7,7 +7,7 @@ Feature: User enter email
     And I wait for 3 seconds
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
-    Then I should see "Спасибо"
+    Then I should see "user@mail.com"
 
   @javascript
   Scenario: User add a city
@@ -55,6 +55,17 @@ Feature: User enter email
      | email | user.gmail.com |
     And "user_email" field should display an error
 
+  @javascript
+  Scenario: User should get error message if email is already taken
+    Given I exist as a user
+    When I visit home page
+    When I click "Запросить инвайт"
+    And I wait for 3 seconds
+    And I click "Запросить инвайт"
+    And I fill in "Твой email:" with "user@g.com"
+    And I press "Получить инвайт"
+    And I wait for ajax request to finish
+    And "user_email" field should display an error
 
   @javascript
   Scenario: City should be unique in the database
