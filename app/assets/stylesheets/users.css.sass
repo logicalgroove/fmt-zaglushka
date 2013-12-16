@@ -1,60 +1,32 @@
-#map-canvas, #map-canvas-main
-  position: absolute
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  height: 100%
-  z-index: 10
-  margin: 0px
-  padding: 0px
-
-.over_map
-  position: relative
-  z-index: 100
-  width: 250px
-  &.main
-    width: auto
-
-#new_user
-  margin: 0 auto
-  width: 860px
-  input
-    font-family: 'pf_handbook_extrathin', sans-serif
-  .field
-    float: left
-    label
-      margin-right: 10px
-      font-size: 30px
-    input
-      background: rgba(0, 0, 0, 0.2)
-      border: 2px solid #fff
-      font-size: 30px
-      color: #fff
+.users
+  .over_map
+    .header
+      background: image-url('alpha-40.png')
       padding: 10px
-      font-family: 'pf_handbook_extrathin', sans-serif
-      -webkit-border-top-left-radius: 5px
-      -webkit-border-bottom-left-radius: 5px
-      -moz-border-radius-topleft: 5px
-      -moz-border-radius-bottomleft: 5px
-      border-top-left-radius: 5px
-      border-bottom-left-radius: 5px
-      &.wrong
-        background-color: #fee6cd
-        color: #b32600
-        box-shadow: 0 0 8px #ff694c
+      height: 80px
+      .logo-small
+        margin-top: 10px
 
-  .actions
-    float: left
-    input
-      background: #fff
-      border: 1px solid #fff
-      font-size: 30px
-      padding: 10px
-      cursor: pointer
-      -webkit-border-top-right-radius: 5px
-      -webkit-border-bottom-right-radius: 5px
-      -moz-border-radius-topright: 5px
-      -moz-border-radius-bottomright: 5px
-      border-top-right-radius: 5px
-      border-bottom-right-radius: 5px
+      #city_name_auto
+        position: absolute
+        width: 360px
+
+    .counter
+      margin-right: 20px
+      .label
+      .number
+        font-size: 60px
+
+  #new_user
+    margin: 0 auto
+    width: 860px
+    .field
+      float: left
+      label
+        margin-right: 10px
+        font-size: 30px
+      input
+        margin-right: 10px
+    .actions
+      float: left
+      input
