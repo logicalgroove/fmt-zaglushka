@@ -20,14 +20,18 @@ Then /^I should have "(.*?)" as travelled cities$/ do |city_name|
   @user.cities.should include(city)
 end
 
-When(/^should be only one "(.*?)" in database$/) do |city_name|
-  city = City.find_by(name: city_name)
-  City.count.should eq(1)
+When(/^should be only one (city|country) "(.*?)" in database$/) do |model_name, city_name|
+  model = model_name.titleize.delete(' ').constantize
+  model.count.should eq(1)
 end
 
-When(/^I should have "(.*?)" as unique city in my travelled cities$/) do |city_name|
+When(/^I should have "(.*?)" as unique (city|country) in my travelled (cities|countries)$/) do |place_name, model_name, _|
   @user.reload
-  @user.cities.where(:name =~ /#{city_name}/).count.should eq(1)
+  if model_name == 'city'
+    @user.cities.where(:name => place_name).count.should eq(1)
+  else
+    @user.countries.where(:name => place_name).count.should eq(1)
+  end
 end
 
 Then /^I should have "(.*?)" cities as travelled cities$/ do |count|
@@ -35,11 +39,13 @@ Then /^I should have "(.*?)" cities as travelled cities$/ do |count|
   @user.city_count.should == count.to_s
 end
 
-Then /^should be only one "(.*?)" on the page$/ do |city_name|
-  page.all("ul#cities li").count.should eql(1)
+Then /^I should see "(.*?)" (city|country) on my page$/ do |count, model_name|
+  within "##{model_name.pluralize}_count .counter" do
+    page.should have_content count
+  end
 end
 
-Then(/^I should have "(.*?)" counties as travelled counties$/) do |count|
+Then(/^I should have "(.*?)" countries as travelled countries$/) do |count|
   @user.reload
   @user.countries_count.should == count.to_s
 end

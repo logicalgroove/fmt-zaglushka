@@ -7,6 +7,7 @@ class User
                    :format => {:with =>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},
                    :uniqueness => true
   has_and_belongs_to_many :cities
+  has_and_belongs_to_many :countries
 
   def add_city(city)
     self.cities << city
