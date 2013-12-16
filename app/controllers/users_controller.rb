@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   expose(:user)
   expose(:users)
-  #expose(:city) {City.new}
-
-  rescue_from Exception, :with => :show_js_errors
-
-  def show_js_errors exception
-    ap exception
-  end
 
   def show
     gon.cities = []
@@ -40,15 +33,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def add_city
-    respond_to do |format|
-      if city
-        user.cities << city
-        user.save
-        format.js
-      else
-        format.json { render json: {error: 'City not found'}}
-      end
-    end
-  end
 end
