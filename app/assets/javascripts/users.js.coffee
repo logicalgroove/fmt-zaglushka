@@ -2,6 +2,10 @@ $ ->
   geocoder = undefined
   map = undefined
 
+  $('#city_name_auto').center()
+  $(window).resize ->
+    $('#city_name_auto').center()
+
   root.initializeMainMap = ->
     geocoder = new google.maps.Geocoder()
     mainMapOptions =
@@ -44,13 +48,13 @@ $ ->
     mapOptions =
       zoom: 3
       center: new google.maps.LatLng(36, -10)
-      #disableDefaultUI: true
-      #scrollwheel: false
-      #navigationControl: false
-      #mapTypeControl: false
-      #scaleControl: false
-      #draggable: false
-      #disableDoubleClickZoom: true
+      scrollwheel: true
+      navigationControl: false
+      mapTypeControl: false
+      scaleControl: false
+      streetViewControl: false
+      draggable: true
+      disableDoubleClickZoom: false
       panControl: false
       zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER }
       mapTypeId: google.maps.MapTypeId.ROADMAP

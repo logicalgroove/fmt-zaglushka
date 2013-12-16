@@ -35,6 +35,9 @@ h1, h2, h3
   width: 439px
   height: 50px
 
+a.logo-small
+  text-indent: -99999px
+
 h1
   font-size: 120px
 h2
@@ -95,32 +98,39 @@ h1
 .btn
   border: 2px solid white
   background: transparent
+  color: #fff
   font-size: 38px
   padding: 2px 20px 6px
   text-decoration: none
-  -webkit-border-radius: 8px
-  -moz-border-radius: 8px
-  border-radius: 8px
+  -webkit-border-radius: 30px
+  -moz-border-radius: 30px
+  border-radius: 30px
   &.btn-small
     font-size: 28px
     padding: 2px 20px 6px
     text-decoration: none
-    -webkit-border-radius: 8px
-    -moz-border-radius: 8px
-    border-radius: 8px
   &.btn-large
     font-size: 48px
     padding: 3px 30px 8px
     text-decoration: none
-    -webkit-border-radius: 10px
-    -moz-border-radius: 10px
-    border-radius: 10px
+    -webkit-border-radius: 40px
+    -moz-border-radius: 40px
+    border-radius: 40px
   &:hover
     background: white
     color: #444
+    cursor: pointer
 
-.city_input_dialog
-  position: absolute
+input.text
+  background: rgba(0, 0, 0, 0.2)
+  border: 2px solid #fff
+  font-size: 30px
+  color: #fff
+  padding: 10px
+  font-family: 'pf_handbook_extrathin', sans-serif
+  -webkit-border-radius: 30px
+  -moz-border-radius: 30px
+  border-radius: 30px
 
 .align-center
   text-align: center
@@ -149,6 +159,24 @@ h1
     width: 157px
     height: 157px
 
-.main
-  .over_map
-    width: auto
+.over_map
+  z-index: 100
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  &.full
+    height: auto
+    bottom: 0
+
+#map-canvas, #map-canvas-main
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  height: 100%
+  z-index: 10
+  margin: 0px
+  padding: 0px
+

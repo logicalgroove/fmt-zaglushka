@@ -1,24 +1,18 @@
 .over_map
-  %p#notice= notice
+  .header
+    = link_to 'Follow My Travel', root_path, class: 'logo-small left'
+    %p#notice= notice
 
-  %p
-    %b Email:
-    = user.email
+    =# link_to 'Добавить город', '#', class: 'btn right'
 
+    = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введите город'
 
-  %h1 Добавить город
+    .counter.right
+      .label городов:
+      #city_count.number= user.city_count
 
-
-  = text_field_tag :city_name_auto
-
-  %ul#cities
-    = render user.cities
-
-  #city_count
-    %h3 Количество городов
-    %span.counter= user.city_count
-  #countries_count
-    %h3 Количество стран
-    %span.counter= user.countries_count
+    .counter.right
+      .label стран:
+      #countries_count.number= user.countries_count
 
 #map-canvas
