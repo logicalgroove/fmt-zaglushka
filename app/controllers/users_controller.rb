@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       if user.save
+        UserMailer.registration_confirmation(user).deliver
         format.html { redirect_to user, notice: 'Спасибо.' }
         format.json { render json: user, status: :created, location: @user }
       else

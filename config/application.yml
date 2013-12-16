@@ -1,0 +1,19 @@
+defaults: &defaults
+mailer: &mailer_defaults
+  host: 'http://151.236.222.196/'
+  address: 'smtp.gmail.com'
+  port: 587
+  domain: 'http://151.236.222.196/'
+  authentication: 'plain'
+  enable_starttls_auto: 'true'
+  user_name: 'hello@followmytravel.com'
+  password: 'Turn to clear vision'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

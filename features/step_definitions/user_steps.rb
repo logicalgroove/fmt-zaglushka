@@ -5,3 +5,4 @@ end
 When /^I visit my user page$/ do
   visit user_path(@user)
 end
+
