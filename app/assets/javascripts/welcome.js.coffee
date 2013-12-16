@@ -49,7 +49,10 @@ $ ->
     regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
     email = $(this).find('#user_email')
     unless regex.test(email.val())
-      email.addClass('wrong')
+      email.switchClass('', 'wrong', 200)
+      setTimeout (->
+        email.switchClass('wrong', '', 200)
+      ), 3000
       false
 
 jQuery.fn.center = ->

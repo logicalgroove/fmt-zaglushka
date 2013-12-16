@@ -3,11 +3,14 @@
     = link_to 'Follow My Travel', root_path, class: 'logo-small left'
     %p#notice= notice
 
-    = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введите город'
+    #map_welcome.dialog.align-center
+      %h2 Спасибо!
+      %h3 Заполни карту путешествий и поделись ею.
+      = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
 
     .counter.right
       .label городов:
-      #city_count.number= user.city_count
+      #cities_count.number= user.city_count
 
     .counter.right
       .label стран:

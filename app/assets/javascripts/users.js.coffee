@@ -2,9 +2,10 @@ $ ->
   geocoder = undefined
   map = undefined
 
-  $('#city_name_auto').center()
+  $('.dialog').center()
   $(window).resize ->
-    $('#city_name_auto').center()
+    $('.dialog').center()
+    $('#city_name_auto.outside').center()
 
   root.initializeMainMap = ->
     geocoder = new google.maps.Geocoder()
