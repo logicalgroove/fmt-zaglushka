@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   expose(:user)
   expose(:users)
-  #expose(:city) {City.new}
 
   def show
     gon.cities = []
@@ -14,11 +13,9 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       if user.save
-        format.html { redirect_to user, notice: 'Спасибо.' }
-        format.json { render json: user, status: :created, location: @user }
+        format.js { render js:  "window.location.replace('#{user_path(user)}')" }
       else
-        format.html { render action: "new" }
-        format.json { render json: user.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -36,15 +33,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def add_city
-    respond_to do |format|
-      if city
-        user.cities << city
-        user.save
-        format.js
-      else
-        format.json { render json: {error: 'City not found'}}
-      end
-    end
-  end
 end
