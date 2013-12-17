@@ -34,4 +34,29 @@ Zaglushka::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+ # ActionMailer Config
+
+  # to have absolute URLs for images and links in emails
+  config.action_mailer.default_url_options = {
+    :host     => Settings.mailer.host,
+    :protocol => 'http',
+    :port     => Settings.mailer.rails_port
+  }
+
+  config.action_mailer.delivery_method = :smtp
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+    address:              Settings.mailer.address,
+    port:                 Settings.mailer.port,
+    domain:               Settings.mailer.domain,
+    authentication:       Settings.mailer.authentication,
+    enable_starttls_auto: Settings.mailer.enable_starttls_auto,
+    user_name:            Settings.mailer.user_name,
+    password:             Settings.mailer.password
+  }
+
 end

@@ -14,6 +14,7 @@ gem 'gon', '4.1.1'
 gem 'execjs'
 gem 'therubyracer'
 gem 'moped'
+gem 'settingslogic'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

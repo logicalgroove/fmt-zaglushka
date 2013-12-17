@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       if user.save
+        UserMailer.registration_confirmation(user).deliver
         format.js { render js:  "window.location.replace('#{user_path(user)}')" }
       else
         format.js

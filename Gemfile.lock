@@ -173,6 +173,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    settingslogic (2.0.9)
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   rspec-rails
   rubyzip (~> 0.9.9)
   sass-rails (~> 3.2.3)
+  settingslogic
   simple_form
   therubyracer
   uglifier (>= 1.0.3)

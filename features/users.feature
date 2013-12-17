@@ -86,3 +86,13 @@ Feature: User enter email
     And I wait for ajax request to finish
     Then I should have "5" cities as travelled cities
     Then I should have "4" countries as travelled countries
+
+  @javascript @email
+  Scenario: User get email after registration
+    When I visit home page
+    When I click "Запросить инвайт"
+    And I wait for 3 seconds
+    And I fill in "Твой email:" with "user@mail.com"
+    And I press "Получить инвайт"
+    Then I should see "user@mail.com"
+    And I should see an "Registered" e-mail

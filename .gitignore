@@ -17,3 +17,4 @@
 *.swo
 *.un~
 public/screenshots/
+config/application.yml
