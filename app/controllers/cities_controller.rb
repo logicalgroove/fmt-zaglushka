@@ -10,6 +10,7 @@ class CitiesController < ApplicationController
     respond_to do |format|
       country = Country.find_or_initialize_by(name: params[:city][:country])
       country.cities << city
+      country.users << user
       country.save
       city.country = country
       city.save
