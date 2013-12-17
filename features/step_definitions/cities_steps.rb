@@ -40,7 +40,7 @@ Then /^I should have "(.*?)" cities as travelled cities$/ do |count|
 end
 
 Then /^I should see "(.*?)" (city|country) on my page$/ do |count, model_name|
-  within "##{model_name.pluralize}_count .counter" do
+  within "##{model_name.pluralize}_count" do
     page.should have_content count
   end
 end

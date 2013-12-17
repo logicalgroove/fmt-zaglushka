@@ -1,5 +1,11 @@
-$('ul#cities').append('<%= escape_javascript(render city) %>');
+$('#city_name_auto').val('')
 show_city_in_maps('<%= city.name %>', '<%= city.latitude %>', '<%= city.longitude %>')
-$('#cities_count .counter').html('<%= user.city_count %>')
-$('#countries_count .counter').html('<%= user.countries_count %>')
-$('#city_name').val('')
+$('#cities_count').html('<%= user.city_count %>')
+$('#countries_count').html('<%= user.countries_count %>')
+
+if ($('#map_welcome').length > 0) {
+  $('#map_welcome').hide('drop', {direction: 'down'}, function() {
+    $('#city_name_auto').appendTo('.header').center().addClass('outside').attr('placeholder', 'Добавить еще город?');
+    $('#map_welcome').remove();
+  });
+}

@@ -31,7 +31,7 @@
     %h2.align-center О собственном опыте друзьям и храни свои заметки путешествий
 
   %section.page_4
-    .over_map
+    .over_map.full
       .header
         .logo-small.left
         .clear
@@ -40,7 +40,7 @@
         %h2.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
         %p.align-center
           = link_to 'Запросить инвайт', '#', :class => 'btn btn-large invite_final'
-      .email_form
+      .users.email_form
         = render 'users/form'
 
     #map-canvas-main
