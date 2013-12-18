@@ -1,0 +1,6 @@
+city = $('#city_name_auto')
+city.switchClass('', 'wrong', 200);
+      setTimeout((function() {
+        return city.switchClass('wrong', '', 200);
+      }), 3000);
+
