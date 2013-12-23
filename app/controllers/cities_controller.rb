@@ -16,6 +16,7 @@ class CitiesController < ApplicationController
       city.save
       unless user.cities.include?(city)
         city.users << user
+        user.save_mini_map(city)
         format.js
       else
         format.js { render partial: 'error'}
