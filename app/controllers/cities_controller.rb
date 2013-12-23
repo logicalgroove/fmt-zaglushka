@@ -18,7 +18,7 @@ class CitiesController < ApplicationController
         city.users << user
         format.js
       else
-        format.json { render json: { :error => 'City is already there.' } }
+        format.js { render partial: 'error'}
       end
     end
   end
