@@ -27,7 +27,6 @@ Feature: User enter email
     And I should see the following country in the database:
     | name | Spain |
 
-
   @javascript
   Scenario: City and country should be unique in the database
     Given I exist as a user
@@ -94,5 +93,5 @@ Feature: User enter email
     And I wait for 3 seconds
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
-    Then I should see "user@mail.com"
+    Then I should see "Спасибо"
     And I should see an "Registered" e-mail
