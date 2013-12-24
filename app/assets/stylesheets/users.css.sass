@@ -1,7 +1,6 @@
 .users
   .over_map
     .header
-      background: image-url('alpha-40.png')
       padding: 10px
       height: 80px
       .logo-small
@@ -9,16 +8,25 @@
 
       #city_name_auto
         width: 360px
+        &.outside
+          position: absolute
+          top: 20px
+          right: 200px
 
       .dialog
         #city_name_auto
           margin-top: 10px
 
-    .counter
-      margin-right: 20px
-      .label
-      .number
-        font-size: 60px
+    .counters
+      float: right
+      text-align: right
+      width: 150px
+      .counter
+        margin-right: 20px
+        float: left
+        .label
+        .number
+          font-size: 60px
 
   #new_user
     margin: 0 auto
