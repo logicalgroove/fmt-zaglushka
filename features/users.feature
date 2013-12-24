@@ -109,3 +109,22 @@ Feature: User enter email
     When I exist as a user
     And I visit "zombie@brain.com" page
     Then I should not see "Спасибо"
+
+  @javascript @email
+  Scenario: User should not be able to register same email using different case letters
+    Given I exist as a user
+    When I visit home page
+    And I click "Запросить инвайт"
+    And I wait for 3 seconds
+    And I click "Запросить инвайт"
+    And I fill in "Твой email:" with "user@g.com"
+    And I press "Получить инвайт"
+    And I wait for ajax request to finish
+    And I visit home page
+    And I click "Запросить инвайт"
+    And I wait for 3 seconds
+    And I click "Запросить инвайт"
+    And I fill in "Твой email:" with "uSer@G.com"
+    And I press "Получить инвайт"
+    And I wait for ajax request to finish
+    Then "user_email" field should display an error

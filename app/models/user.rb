@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-
+  before_validation :downcase_email
   field :email, type: String
   validates :email,:presence => true,
                    :format => {:with =>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},
@@ -38,5 +38,11 @@ class User
     end
 
     map.write "public/world_map_#{id.to_s}.jpg"
+  end
+
+  private
+
+  def downcase_email
+    self.email = self.email.downcase if self.email.present?
   end
 end
