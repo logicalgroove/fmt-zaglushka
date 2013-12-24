@@ -10,10 +10,12 @@
     = link_to 'Follow My Travel', root_path, class: 'logo-small left'
     %p#notice= notice
 
-    #map_welcome.dialog.align-center
-      %h2 Спасибо!
-      %h3 Заполни карту путешествий и поделись ею.
-      = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
+    - if current_user
+      #map_welcome.dialog.align-center
+        %h2 Спасибо!
+        %h3 Заполни карту путешествий и поделись ею.
+        = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
+
 
     .counter.right
       .label городов:

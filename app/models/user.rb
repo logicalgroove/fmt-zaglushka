@@ -39,5 +39,4 @@ class User
 
     map.write "public/world_map_#{id.to_s}.jpg"
   end
-
 end

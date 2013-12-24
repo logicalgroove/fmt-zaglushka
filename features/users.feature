@@ -5,6 +5,7 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
+    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
     Then I should see "Спасибо!"
@@ -48,7 +49,7 @@ Feature: User enter email
   @javascript
   Scenario: User should get error message when enters invalid email
     When I visit home page
-    When I click "Запросить инвайт"
+    And I click "Запросить инвайт"
     And I wait for 3 seconds
     And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user.gmail.com"
@@ -62,13 +63,13 @@ Feature: User enter email
   Scenario: User should get error message if email is already taken
     Given I exist as a user
     When I visit home page
-    When I click "Запросить инвайт"
+    And I click "Запросить инвайт"
     And I wait for 3 seconds
     And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@g.com"
     And I press "Получить инвайт"
     And I wait for ajax request to finish
-    And "user_email" field should display an error
+    Then "user_email" field should display an error
 
   @javascript
   Scenario: User creates multiple cities and countries
@@ -85,7 +86,7 @@ Feature: User enter email
     And I search google maps for "Habana, Cuba"
     And I wait for ajax request to finish
     Then I should have "5" cities as travelled cities
-    Then I should have "4" countries as travelled countries
+    And I should have "4" countries as travelled countries
 
   @javascript @email
   Scenario: User get email after registration
@@ -98,3 +99,13 @@ Feature: User enter email
     Then I should see "Спасибо"
     And I should see an "Registered" e-mail
 
+  @javascript
+  Scenario: Not valid user should be able to view users page without editing it
+    Given there is a user with "zombie@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    When I exist as a user
+    And I visit "zombie@brain.com" page
+    Then I should not see "Спасибо"

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user.save
         UserMailer.registration_confirmation(user).deliver
+        session[:user_id] = user.id
         format.js { render js:  "window.location.replace('#{user_path(user)}')" }
       else
         format.js
@@ -33,5 +34,4 @@ class UsersController < ApplicationController
       end
     end
   end
-
 end
