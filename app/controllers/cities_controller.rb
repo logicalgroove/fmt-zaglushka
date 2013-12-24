@@ -5,6 +5,7 @@ class CitiesController < ApplicationController
                                     g_id: params[:city][:g_id])}
   expose(:cities)
   expose(:user) {User.find(params[:user_id]) if params[:user_id]}
+  before_filter :require_login, :only => :create
 
   def create
     respond_to do |format|

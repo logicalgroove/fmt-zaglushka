@@ -29,22 +29,22 @@ $ ->
     options =
       types: ["(cities)"]
 
+    if $("#city_name_auto").length > 0
+      input = document.getElementById("city_name_auto")
+      autocomplete = new google.maps.places.Autocomplete(input, options)
 
-    input = document.getElementById("city_name_auto") # if $("ul li:contains(\"city_name_auto\")").length
-    autocomplete = new google.maps.places.Autocomplete(input, options)
-
-    google.maps.event.addListener autocomplete, 'place_changed', ->
-      place = autocomplete.getPlace()
-      country = ''
-      for addr in place.address_components
-        for type in addr.types
-          if type == 'country'
-            country = addr.long_name
-      $.ajax
-        context: this
-        url: '/cities'
-        type: 'POST'
-        data: {city: {name: place.name, latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), g_id: place.id, country: country}, user_id: gon.user_id}
+      google.maps.event.addListener autocomplete, 'place_changed', ->
+        place = autocomplete.getPlace()
+        country = ''
+        for addr in place.address_components
+          for type in addr.types
+            if type == 'country'
+              country = addr.long_name
+        $.ajax
+          context: this
+          url: '/cities'
+          type: 'POST'
+          data: {city: {name: place.name, latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng(), g_id: place.id, country: country}, user_id: gon.user_id}
 
     geocoder = new google.maps.Geocoder()
     mapOptions =

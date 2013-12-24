@@ -21,4 +21,5 @@ class User
   def countries_count
     cities.group_by(&:country_id).count.to_s
   end
+
 end
