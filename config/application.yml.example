@@ -6,7 +6,7 @@ mailer: &mailer_defaults
   domain: '151.236.222.196'
   authentication: 'plain'
   enable_starttls_auto: 'true'
-  user_name: 'username'
+  user_name: 'user@.mail.com'
   password: 'password'
   rails_port: 3001
 

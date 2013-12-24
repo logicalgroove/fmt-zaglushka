@@ -22,4 +22,21 @@ class User
     cities.group_by(&:country_id).count.to_s
   end
 
+  def world_map_name
+    user_map = "world_map_#{id.to_s}.jpg"
+    default_map = 'world_map.jpg'
+    return File.file?("public/#{user_map}") ? user_map : default_map
+  end
+
+  def save_mini_map(city)
+    map = MiniMagick::Image.open("public/#{world_map_name}")
+    marker = MiniMagick::Image.open('app/assets/images/pin.png')
+
+    map = map.composite(marker) do |c|
+      c.compose "Over"
+      c.geometry "+#{city.longitude_in_px}+#{city.latitude_in_px}"
+    end
+
+    map.write "public/world_map_#{id.to_s}.jpg"
+  end
 end

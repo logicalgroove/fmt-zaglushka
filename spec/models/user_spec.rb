@@ -35,4 +35,17 @@ describe User do
     end
   end
 
+  describe "when user add city" do
+    let(:country) { FactoryGirl.create(:country) }
+    let(:city) { FactoryGirl.create(:city, country: country) }
+    after do
+      File.delete("public/world_map_#{@user.id.to_s}.jpg")
+    end
+    it "create a jpeg" do
+      @user.cities << city
+      @user.save_mini_map(city)
+      File.exist?("public/world_map_#{@user.id.to_s}.jpg").should be_true 
+    end
+  end
+
 end

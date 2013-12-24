@@ -17,9 +17,10 @@ class CitiesController < ApplicationController
       city.save
       unless user.cities.include?(city)
         city.users << user
+        user.save_mini_map(city)
         format.js
       else
-        format.json { render json: { :error => 'City is already there.' } }
+        format.js { render partial: 'error'}
       end
     end
   end

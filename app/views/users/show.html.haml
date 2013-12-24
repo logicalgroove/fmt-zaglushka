@@ -1,3 +1,10 @@
+- content_for :head do
+  %meta{content: "#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", property: "og:image"}/
+  %meta{content: "Моя карта путешествий", property: "og:title"}/
+  %meta{content: "#{request.original_url}", property: "og:url"}/
+  %meta{content: "followmytravel.com", property: "og:site_name"}/
+  %meta{content: "Я посетил #{user.city_count} городов в #{user.countries_count} странах, а ты?", property: "og:description"}/
+
 .over_map
   .header
     = link_to 'Follow My Travel', root_path, class: 'logo-small left'

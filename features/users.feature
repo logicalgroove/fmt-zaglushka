@@ -28,7 +28,6 @@ Feature: User enter email
     And I should see the following country in the database:
     | name | Spain |
 
-
   @javascript
   Scenario: City and country should be unique in the database
     Given I exist as a user
@@ -39,6 +38,7 @@ Feature: User enter email
     And I wait for ajax request to finish
     And I search google maps for "Barcelona, Spain"
     And I wait for ajax request to finish
+    Then "city_name_auto" field should display an error
     And should be only one city "Barcelona" in database
     And should be only one country "Spain" in database
     And I should have "Barcelona" as unique city in my travelled cities
@@ -93,6 +93,7 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
+    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
     Then I should see "Спасибо"
