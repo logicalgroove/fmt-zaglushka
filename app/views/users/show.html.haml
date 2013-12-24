@@ -17,12 +17,13 @@
         = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
 
 
-    .counter.right
-      .label городов:
-      #cities_count.number= user.city_count
+    .counters{class: ('hide' unless user.cities?)}
+      .counter
+        .label городов:
+        #cities_count.number= user.city_count
 
-    .counter.right
-      .label стран:
-      #countries_count.number= user.countries_count
+      .counter
+        .label стран:
+        #countries_count.number= user.countries_count
 
 #map-canvas

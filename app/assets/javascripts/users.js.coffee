@@ -5,7 +5,6 @@ $ ->
   $('.dialog').center()
   $(window).resize ->
     $('.dialog').center()
-    $('#city_name_auto.outside').center()
 
   root.initializeMainMap = ->
     geocoder = new google.maps.Geocoder()
