@@ -17,4 +17,5 @@
 *.swo
 *.un~
 public/screenshots/
+public/world_map_*
 config/application.yml
