@@ -19,11 +19,17 @@
 
     .counters{class: ('hide' unless user.cities?)}
       .counter
-        .label городов:
+        .label городов
         #cities_count.number= user.city_count
 
       .counter
-        .label стран:
+        .label стран
         #countries_count.number= user.countries_count
+
+.share_container
+  .share_label Поделись своей картой с миром!
+  = link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", target: '_blank', class: 'facebook'
+  = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=Я посетил #{user.city_count} городов в #{user.countries_count} странах, а ты? #{request.original_url}", target: '_blank', class: 'twitter'
+  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Моя карта путешествий&description=Я посетил #{user.city_count} городов в #{user.countries_count} странах, а ты?&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk'
 
 #map-canvas
