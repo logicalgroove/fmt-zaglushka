@@ -128,3 +128,15 @@ Feature: User enter email
     And I press "Получить инвайт"
     And I wait for ajax request to finish
     Then "user_email" field should display an error
+
+  @javascript
+  Scenario: Visitor becomes a user
+    Given there is a user with "zombie@brain.com" email
+    When I exist as a user
+    And I visit "zombie@brain.com" page
+    And I click "Стань участником!"
+    And I fill in "Твой email:" with "user@g.ru"
+    And I press "Получить инвайт"
+    And I wait for ajax request to finish
+    Then I should see "Спасибо"
+

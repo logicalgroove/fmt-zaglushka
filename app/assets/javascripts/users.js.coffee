@@ -98,4 +98,19 @@ $ ->
     #google.maps.event.addDomListener window, "load", initialize
     initializeMainMap()
 
+  $('.invite_final').click ->
+    $(this).hide()
+    $('.text_container').show()
+    $('.email_form').show()
+
+  $('#new_user').submit  ->
+    regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+    email = $(this).find('#user_email')
+    unless regex.test(email.val())
+      email.switchClass('', 'wrong', 200)
+      setTimeout (->
+        email.switchClass('wrong', '', 200)
+      ), 3000
+      false
+
 root = exports ? this

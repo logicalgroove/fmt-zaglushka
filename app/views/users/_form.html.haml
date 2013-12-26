@@ -1,4 +1,4 @@
-= simple_form_for user, remote: true do |f|
+= simple_form_for User.new, remote: true do |f|
   .field
     = f.label :email, label: 'Твой email:'
     = f.text_field :email, placeholder: 'mail@example.com', class: 'text'
