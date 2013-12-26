@@ -7,6 +7,11 @@ def mock_sessions
   end
 end
 
+def clear_session
+  browser = Capybara.current_session.driver.browser
+    browser.clear_cookies
+end
+
 Given /^I exist as a user$/ do
   @user = FactoryGirl.create(:user, email: 'user@g.com')
   mock_sessions
@@ -28,6 +33,7 @@ Given /^this user has the following cities in the database:$/  do |table|
 end
 
 When /^I visit "(.*?)" page$/  do |email|
-  user = User.where(email: email)
+  clear_session
+  user = User.where(email: email).last
   visit user_path(user)
 end

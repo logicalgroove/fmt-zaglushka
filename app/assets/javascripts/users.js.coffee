@@ -98,4 +98,7 @@ $ ->
     #google.maps.event.addDomListener window, "load", initialize
     initializeMainMap()
 
+  $('.invite_final').click ->
+    $('.text_container').show()
+
 root = exports ? this

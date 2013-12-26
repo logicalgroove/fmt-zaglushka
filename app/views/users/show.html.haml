@@ -15,6 +15,14 @@
         %h2 Спасибо!
         %h3 Заполни карту путешествий и поделись ею.
         = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
+    - else
+      .right
+        = link_to "Стань участником!", '#', :class => 'btn btn-large invite_final'
+      .text_container.dialog.align-center.hide
+        %h2.align-center Уже скоро!
+        %h3.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
+        .users.email_form
+          = render 'users/form'
 
 
     .counters{class: ('hide' unless user.cities?)}
