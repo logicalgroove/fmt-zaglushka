@@ -1,5 +1,5 @@
 $('#city_name_auto').val('')
-show_city_in_maps('<%= city.name %>', '<%= city.latitude %>', '<%= city.longitude %>')
+show_city_in_maps('<%= "#{city.name}, #{city.country.name}" %>', '<%= city.latitude %>', '<%= city.longitude %>')
 
 $('.counters.hide').show('drop', {direction: 'up'})
 

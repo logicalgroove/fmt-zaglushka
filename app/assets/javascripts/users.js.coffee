@@ -63,6 +63,7 @@ $ ->
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
     map.setOptions styles: styles
 
+
   root.show_city_in_maps = (address, latitude, longitude) ->
     pinImage = new google.maps.MarkerImage("/assets/pin.png", new google.maps.Size(21, 34), new google.maps.Point(0,0), new google.maps.Point(10, 34))
 
@@ -72,6 +73,14 @@ $ ->
       position: new google.maps.LatLng(latitude, longitude)
     )
     marker.setAnimation(google.maps.Animation.DROP)
+    iw = new google.maps.InfoWindow({content: address})
+
+    google.maps.event.addListener marker, "mouseover", ->
+      iw.open map, marker
+      $(".gm-style-iw").next("div").remove()
+
+    google.maps.event.addListener marker, "mouseout", ->
+      iw.close()
 
   styles = [
     { featureType: "water", stylers: [ { color: '#309eb5' }, { visibility: "simplified" } ] },
@@ -100,5 +109,7 @@ $ ->
 
   $('.invite_final').click ->
     $('.text_container').show()
+
+
 
 root = exports ? this

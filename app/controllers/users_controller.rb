@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     gon.cities = []
     gon.user_id = user.id.to_s
     user.cities.each do |city|
-      gon.cities.push({name: city.name, latitude: city.latitude, longitude: city.longitude})
+      gon.cities.push({name: "#{city.name}, #{city.country.name}", latitude: city.latitude, longitude: city.longitude})
     end
   end
 
