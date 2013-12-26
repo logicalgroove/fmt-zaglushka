@@ -5,7 +5,6 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
-    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
     Then I should see "Спасибо!"
@@ -51,7 +50,6 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
-    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user.gmail.com"
     And I press "Получить инвайт"
     And I wait for ajax request to finish
@@ -65,7 +63,6 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
-    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@g.com"
     And I press "Получить инвайт"
     And I wait for ajax request to finish
@@ -93,7 +90,6 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
-    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
     Then I should see "Спасибо"
@@ -116,7 +112,6 @@ Feature: User enter email
     When I visit home page
     And I click "Запросить инвайт"
     And I wait for 3 seconds
-    And I click "Запросить инвайт"
     And I fill in "Твой email:" with "user@g.com"
     And I press "Получить инвайт"
     And I wait for ajax request to finish
