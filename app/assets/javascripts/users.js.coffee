@@ -63,8 +63,9 @@ $ ->
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
     map.setOptions styles: styles
 
+  root.show_city_in_maps = (address, latitude, longitude, zoom) ->
+    zoom = (if typeof zoom isnt "undefined" then zoom else false)
 
-  root.show_city_in_maps = (address, latitude, longitude) ->
     pinImage = new google.maps.MarkerImage("/assets/pin.png", new google.maps.Size(21, 34), new google.maps.Point(0,0), new google.maps.Point(10, 34))
 
     marker = new google.maps.Marker(
@@ -81,6 +82,9 @@ $ ->
 
     google.maps.event.addListener marker, "mouseout", ->
       iw.close()
+
+    if zoom
+      map.panTo(marker.getPosition())
 
   styles = [
     { featureType: "water", stylers: [ { color: '#309eb5' }, { visibility: "simplified" } ] },
@@ -109,7 +113,5 @@ $ ->
 
   $('.invite_final').click ->
     $('.text_container').show()
-
-
 
 root = exports ? this
