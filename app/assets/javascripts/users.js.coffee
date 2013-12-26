@@ -74,6 +74,15 @@ $ ->
       position: new google.maps.LatLng(latitude, longitude)
     )
     marker.setAnimation(google.maps.Animation.DROP)
+    iw = new google.maps.InfoWindow({content: address})
+
+    google.maps.event.addListener marker, "mouseover", ->
+      iw.open map, marker
+      $(".gm-style-iw").next("div").remove()
+
+    google.maps.event.addListener marker, "mouseout", ->
+      iw.close()
+
     if zoom
       map.panTo(marker.getPosition())
 
