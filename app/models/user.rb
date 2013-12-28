@@ -40,6 +40,10 @@ class User
     map.write "public/world_map_#{id.to_s}.jpg"
   end
 
+  def share_text
+    "У меня #{city_count}. А у тебя?"
+  end
+
   private
 
   def downcase_email
