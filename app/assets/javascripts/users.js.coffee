@@ -6,24 +6,6 @@ $ ->
   $(window).resize ->
     $('.dialog').center()
 
-  root.initializeMainMap = ->
-    geocoder = new google.maps.Geocoder()
-    mainMapOptions =
-      zoom: 3
-      center: new google.maps.LatLng(33, -10)
-      disableDefaultUI: true
-      scrollwheel: false
-      navigationControl: false
-      mapTypeControl: false
-      scaleControl: false
-      draggable: false
-      disableDoubleClickZoom: true
-      panControl: false
-      zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER }
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    map = new google.maps.Map(document.getElementById("map-canvas-main"), mainMapOptions)
-    map.setOptions styles: styles
-
   root.initializeUserMap = ->
     options =
       types: ["(cities)"]
@@ -83,7 +65,7 @@ $ ->
     google.maps.event.addListener marker, "mouseout", ->
       iw.close()
 
-    if zoom
+    if typeof zoom is 'undefined'
       map.panTo(marker.getPosition())
 
   styles = [
@@ -106,10 +88,6 @@ $ ->
     initializeUserMap()
     for city in gon.cities
       show_city_in_maps(city.name, city.latitude, city.longitude)
-
-  if $('#map-canvas-main').length > 0
-    #google.maps.event.addDomListener window, "load", initialize
-    initializeMainMap()
 
   $('.invite_final').click ->
     $('.text_container').show()

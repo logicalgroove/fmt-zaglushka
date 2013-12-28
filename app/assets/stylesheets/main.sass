@@ -1,15 +1,16 @@
 $maincolor: #33ebc7
 
 html, body
-  height: 100%
   margin: 0px
   padding: 0px
+  font-size: 10px
 
 body
   background: $maincolor
   color: white
   font-family: 'pf_handbook_extrathin', sans-serif
   font-weight: 400
+  font-size: 10px
 
 a
   color: white
@@ -27,70 +28,83 @@ a
 h1, h2, h3
   font-weight: 400
 
+img
+  max-width: 100%
+  width: 100%
+  height: auto
+
 .logo
-  background: image-url('fmt-logo.png') no-repeat
-  width: 364px
-  height: 337px
-  margin: 40px 0 40px 40px
+  width: 36.4em
+  height: 33.7em
+  margin: 5% 0 3em
 
 .logo-small
-  background: image-url('fmt-logo-small.png') no-repeat
-  width: 439px
-  height: 50px
+  width: 43.9em
+  height: 5em
+  top: 2%
+  left: 2%
+  position: absolute
 
 a.logo-small
   text-indent: -99999px
 
+.container
+  position: relative
+  margin: 0 auto
+  width: 110em
+  height: 100%
+
+.invite_me
+  position: absolute
+  top: 2%
+  right: 2%
+
 h1
-  font-size: 120px
+  font-size: 12em
 h2
-  font-size: 60px
+  font-size: 6em
 h3
-  font-size: 30px
+  font-size: 3em
 
 .page_1
   background: image-url('bg1.jpg') no-repeat center
+  background-size: 120%
   overflow: hidden
-  .container
-    margin-left: 40px
-    position: absolute
-    bottom: 100px
-  h1
-    width: 720px
-    font-size: 50px
-    line-height: 50px
+  h2
+    font-size: 6em
+    line-height: 1em
+    margin-bottom: 0.8em
+  .invite_me
+    position: relative
 
 .page_2
   background: #309eb2 image-url('bg3.jpg') no-repeat center
-  h1
-    margin-top: 40px
-  p
-    margin-top: 60px
+  background-size: 120%
+  .container
+    top: 20%
     span
-      margin: 0 30px
+      margin: 0 3em
 
 .page_3
   background: #f06173 image-url('bg2.jpg') no-repeat center
-  h2
-    margin: 0 25%
+  background-size: 120%
+  .container
+    top: 20%
+    h2
+      margin-bottom: 0
 
 .page_4
-  h1
-    margin-top: 40px
-  h2
-    margin: 0 40px
-  h3
-    margin-top: 40px
-  p
-    margin-top: 40px
-  .btn-large
-    padding: 10px 30px
+  .container
+    padding-top: 11%
 
 .email_form
   display: none
 
 h1
-  margin-bottom: 40px
+  margin-bottom: .4em
+
+h2
+  margin-bottom: 1em
 
 .center
   margin: 0 auto
@@ -99,28 +113,29 @@ h1
   padding: 25px
 
 .btn
-  border: 2px solid white
+  border: .07em solid white
   background: transparent
   color: #fff
-  font-size: 38px
+  font-size: 3.8em
   font-family: 'pf_handbook_extrathin', sans-serif
-  padding: 2px 20px 6px
+  padding: .1em .7em .2em
   text-decoration: none
   outline: none
-  -webkit-border-radius: 30px
-  -moz-border-radius: 30px
-  border-radius: 30px
+  -webkit-border-radius: 3em
+  -moz-border-radius: 3em
+  border-radius: 3em
   &.btn-small
-    font-size: 28px
-    padding: 2px 20px 6px
+    border-width: .08em
+    font-size: 2.8em
     text-decoration: none
   &.btn-large
-    font-size: 48px
-    padding: 3px 30px 8px
+    border-width: .05em
+    font-size: 4.8em
+    padding: 0.1em 1em 0.2em
     text-decoration: none
-    -webkit-border-radius: 40px
-    -moz-border-radius: 40px
-    border-radius: 40px
+    -webkit-border-radius: 4em
+    -moz-border-radius: 4em
+    border-radius: 4em
   &:hover
     background: white
     color: #444
@@ -128,20 +143,20 @@ h1
 
 input.text
   background: rgba(0, 0, 0, 0.2)
-  border: 2px solid #fff
-  font-size: 30px
+  border: .07em solid #fff
+  font-size: 3em
   color: #fff
-  padding: 10px
+  padding: .4em
   font-family: 'pf_handbook_extrathin', sans-serif
   outline: none
-  -webkit-border-radius: 30px
-  -moz-border-radius: 30px
-  border-radius: 30px
+  -webkit-border-radius: 3em
+  -moz-border-radius: 3em
+  border-radius: 3em
   outline: none
   &.wrong
     background: rgba(255, 255, 255, 0.4)
     color: #b32600
-    box-shadow: 0 0 8px #ff694c
+    box-shadow: 0 0 .8em #ff694c
     border-color: transparent
 
 .align-center
@@ -154,34 +169,14 @@ input.text
   clear: both
 
 .icon
-  background: image-url('icon-map.png') no-repeat
-  width: 116px
-  height: 116px
+  width: 11.6em
+  height: 11.6em
   display: inline-block
-  &.food
-    background-position: 0 0
-  &.stay
-    background-position: -116px 0
-  &.see
-    background-position: -232px 0
-  &.walk
-    background-position: -348px 0
   &.talk
-    background: image-url('icon-talk.png') no-repeat
-    width: 157px
-    height: 157px
+    width: 15.7em
+    height: 15.7em
 
-.over_map
-  z-index: 100
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  &.full
-    height: auto
-    bottom: 0
-
-#map-canvas, #map-canvas-main
+#map-canvas
   position: absolute
   top: 0
   bottom: 0
