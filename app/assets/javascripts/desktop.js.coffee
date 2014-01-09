@@ -3,6 +3,9 @@ $ ->
   map = undefined
   been_there = false
 
+  $(window).resize ->
+    $('.dialog').center()
+
   cities = [
     {name: 'Madrid', latitude: '40.4167754', longitude: '-3.7037901999999576'},
     {name: 'New York', latitude: '40.7143528', longitude: '-74.0059731'},

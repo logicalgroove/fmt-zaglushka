@@ -3,8 +3,6 @@ $ ->
   map = undefined
 
   $('.dialog').center()
-  $(window).resize ->
-    $('.dialog').center()
 
   root.initializeUserMap = ->
     options =
@@ -65,7 +63,7 @@ $ ->
     google.maps.event.addListener marker, "mouseout", ->
       iw.close()
 
-    if typeof zoom is 'undefined'
+    if zoom
       map.panTo(marker.getPosition())
 
   styles = [
