@@ -90,4 +90,9 @@ $ ->
   $('.invite_final').click ->
     $('.text_container').show()
 
+  $('.finish_my_map').click ->
+    $(this).hide()
+    $('#city_name_auto').hide()
+    $('.share_container').center().show('drop', {direction: 'up'})
+
 root = exports ? this
