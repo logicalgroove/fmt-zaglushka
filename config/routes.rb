@@ -4,5 +4,7 @@ Zaglushka::Application.routes.draw do
 
   resources :users
   resources :cities
-
+  if Rails.env.development?
+    mount UserMailer::Preview => 'preview_email'
+  end
 end
