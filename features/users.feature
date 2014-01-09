@@ -93,7 +93,7 @@ Feature: User enter email
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
     Then I should see "Спасибо"
-    And I should see an "Registered" e-mail
+    And I should see an "Добро пожаловать!" e-mail
 
   @javascript
   Scenario: Not valid user should be able to view users page without editing it
