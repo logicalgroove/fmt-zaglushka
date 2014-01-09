@@ -7,7 +7,7 @@ Feature: User enter email
     And I wait for 3 seconds
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
-    Then I should see "Спасибо!"
+    Then I should see "Ура! Мы рады, что ты с нами!"
 
   @javascript
   Scenario: User add a city
@@ -92,7 +92,7 @@ Feature: User enter email
     And I wait for 3 seconds
     And I fill in "Твой email:" with "user@mail.com"
     And I press "Получить инвайт"
-    Then I should see "Спасибо"
+    Then I should see "Ура! Мы рады, что ты с нами!"
     And I should see an "Добро пожаловать!" e-mail
 
   @javascript
@@ -104,7 +104,7 @@ Feature: User enter email
     | name | Odessa    |
     When I exist as a user
     And I visit "zombie@brain.com" page
-    Then I should not see "Спасибо"
+    Then I should not see "Ура! Мы рады, что ты с нами!"
 
   @javascript @email
   Scenario: User should not be able to register same email using different case letters
@@ -133,5 +133,5 @@ Feature: User enter email
     And I fill in "Твой email:" with "user@g.ru"
     And I press "Получить инвайт"
     And I wait for ajax request to finish
-    Then I should see "Спасибо"
+    Then I should see "Ура! Мы рады, что ты с нами!"
 
