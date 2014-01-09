@@ -3,5 +3,6 @@
  *= require reset.css
  *= require onepage-scroll
  *= require animate
- *= require_tree .
+ *= require main
+ *= require users
  */

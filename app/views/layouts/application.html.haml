@@ -4,11 +4,19 @@
     %meta
     %title
       Follow My Travel
+    %meta{content: "initial-scale=1.0, width=device-width", name: "viewport"}
     = stylesheet_link_tag "application", :media => "all"
-    =# javascript_include_tag 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'
+
+    = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false&key=AIzaSyCaF8hCqtGfJfTk2DDciDSHNctYTF5kLKY&language=ru'
 
     = javascript_include_tag "application"
+    - if mobile?
+      = javascript_include_tag 'mobile'
+      = stylesheet_link_tag 'mobile', :media => "all"
+    - else
+      = javascript_include_tag 'desktop'
+      = stylesheet_link_tag 'desktop', :media => "all"
     = javascript_tag '$.fx.off = true;' if Rails.env.test?
     = csrf_meta_tags
     = include_gon
