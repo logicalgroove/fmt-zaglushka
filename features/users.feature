@@ -134,4 +134,3 @@ Feature: User enter email
     And I press "Получить инвайт"
     And I wait for ajax request to finish
     Then I should see "Ура! Мы рады, что ты с нами!"
-
