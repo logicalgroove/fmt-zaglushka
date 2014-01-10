@@ -3,8 +3,10 @@ $ ->
   map = undefined
   been_there = false
 
+  $('.icon.down').center('left')
   $(window).resize ->
     $('.dialog').center()
+    $('.icon.down').center('left')
 
   cities = [
     {name: 'Madrid', latitude: '40.4167754', longitude: '-3.7037901999999576'},
@@ -88,5 +90,10 @@ $ ->
   if $('#map-canvas-main').length > 0
     #google.maps.event.addDomListener window, "load", initialize
     initializeMainMap()
+
+  $('.md1, .md2, .md3').click ->
+    $(".main").moveDown()
+
+
 
 root = exports ? this
