@@ -1,17 +1,50 @@
+- content_for :head do
+  %meta{content: "#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", property: "og:image"}/
+  %meta{content: "Follow My Travel", property: "og:title"}/
+  %meta{content: "#{request.original_url}", property: "og:url"}/
+  %meta{content: "followmytravel.com", property: "og:site_name"}/
+  %meta{content: user.share_text , property: "og:description"}/
+
 .over_map
-  %p#notice= notice
+  .header
+    .logo-small
+      = link_to image_tag('fmt-logo-small.png'), root_path
+    %p#notice= notice
 
-  %p
-    %b Email:
-    = user.email
+    - if current_user
+      #map_welcome.dialog.align-center
+        %h2 Ура! Мы рады, что ты с нами!
+        %h3
+          Интересно в скольких городах и странах ты бы?
+          %br
+          Давай посчитаем!
+        = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
+    - else
+      .right
+        = link_to "Стань участником!", '#', :class => 'btn btn-large invite_final'
+      .text_container.dialog.align-center.hide
+        %h2.align-center Уже скоро!
+        %h3.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
+        .users.email_form
+          = render 'users/form'
 
+    .counters{class: ('hide' unless user.cities?)}
+      .counter
+        .label городов
+        #cities_count.number= user.city_count
 
-  %h1 Добавить город
+      .counter
+        .label стран
+        #countries_count.number= user.countries_count
 
+= link_to 'Моя карта готова', '#', class: 'btn finish_my_map hide'
 
-  = text_field_tag :city_name_auto
+.dialog.share_container.hide.align-center
+  %h2 Поделись своей картой с миром!
+  %p Проверь почту — ссылка на карту уже там!
 
-  %ul#cities
-    = render user.cities
+  = link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", target: '_blank', class: 'facebook'
+  = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
+  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
 
 #map-canvas

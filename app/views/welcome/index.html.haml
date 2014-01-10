@@ -1,6 +1,67 @@
 .main
   %section.page_1
-    .logo
     .container
-      %h1 Самый простой способ обмениваться впечатлениями о путешествиях
+      .logo
+        = image_tag 'fmt-logo.png'
+      %h2
+        Самый простой способ обмениваться
+        %br
+        впечатлениями о путешествиях
+      = link_to 'Запросить инвайт', '#', :class => 'btn invite_me'
+    = link_to '', '#', class: 'icon down md1'
 
+  %section.page_2
+    .logo-small
+      = image_tag 'fmt-logo-small.png'
+    = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me'
+    .container
+      %h1.align-center Найди
+      %h2.align-center Самые интересные места по мнению твоих друзей
+      %p.align-center
+        %span.icon
+          = image_tag 'icon-food.png'
+        %span.icon
+          = image_tag 'icon-stay.png'
+        %span.icon
+          = image_tag 'icon-see.png'
+        %span.icon
+          = image_tag 'icon-walk.png'
+    = link_to '', '#', class: 'icon down md2'
+
+  %section.page_3
+    .logo-small
+      = image_tag 'fmt-logo-small.png'
+    = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me'
+    .container
+      %p.align-center
+        %span.icon.talk
+          = image_tag 'icon-talk.png'
+      %h1.align-center Расскажи
+      %h2.align-center
+        Друзьям о собственном опыте
+        %br
+        и храни свои заметки из путешествий
+    = link_to '', '#', class: 'icon down md3'
+
+  %section.page_4
+    .over_map.full
+      .logo-small
+        = image_tag 'fmt-logo-small.png'
+      .container
+        %h1.align-center Уже скоро!
+        %h2.align-center
+          Проект в стадии разработки,
+          %br
+          но уже сегодня ты можешь запросить инвайт
+          %br
+          и создать свою карту путешествий
+        %p.align-center
+          = link_to 'Запросить инвайт', '#', :class => 'btn btn-large invite_final'
+        .users.email_form
+          = render 'users/form'
+      .social_links
+        = link_to 'Facebook', 'https://www.facebook.com/followmytravel', class: 'icon facebook', target: '_blank'
+        = link_to 'Instagram', 'http://instagram.com/fmytravel', class: 'icon instagram', target: '_blank'
+        = mail_to 'hello@followmytravel.com', nil, class: 'icon email', title: 'hello@followmytravel.com'
+
+    #map-canvas-main

@@ -1,55 +1,85 @@
-#map-canvas, #map-canvas-main
-  position: absolute
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  height: 100%
-  z-index: 10
-  margin: 0px
-  padding: 0px
+.users
+  .over_map
+    .header
+      padding: 1em 2em
+      height: 8em
+      .logo-small
+        margin-top: 1em
 
-.over_map
-  position: relative
-  z-index: 100
-  width: 250px
-  &.main
-    width: auto
+      #city_name_auto
+        width: 12em
+        &.outside
+          position: absolute
+          top: 1em
+          right: 7em
 
-#new_user
-  margin: 0 auto
-  width: 860px
-  input
-    font-family: 'pf_handbook_extrathin', sans-serif
-  .field
-    float: left
-    label
-      margin-right: 10px
-      font-size: 30px
-    input
-      background: rgba(0, 0, 0, 0.2)
-      border: 2px solid #fff
-      font-size: 30px
-      color: #fff
-      padding: 10px
-      font-family: 'pf_handbook_extrathin', sans-serif
-      -webkit-border-top-left-radius: 5px
-      -webkit-border-bottom-left-radius: 5px
-      -moz-border-radius-topleft: 5px
-      -moz-border-radius-bottomleft: 5px
-      border-top-left-radius: 5px
-      border-bottom-left-radius: 5px
-  .actions
-    float: left
-    input
-      background: #fff
-      border: 1px solid #fff
-      font-size: 30px
-      padding: 10px
-      cursor: pointer
-      -webkit-border-top-right-radius: 5px
-      -webkit-border-bottom-right-radius: 5px
-      -moz-border-radius-topright: 5px
-      -moz-border-radius-bottomright: 5px
-      border-top-right-radius: 5px
-      border-bottom-right-radius: 5px
+      .dialog
+        #city_name_auto
+          margin-top: 10px
+
+    .counters
+      float: right
+      text-align: right
+      width: auto
+      .counter
+        margin-left: 2em
+        float: right
+        .label
+          font-size: 1.5em
+        .number
+          font-size: 6em
+
+  #new_user
+    margin: 0 auto
+    width: 90em
+    .field
+      float: left
+      label
+        margin-right: 1em
+        font-size: 3em
+      input
+        margin-right: 1em
+    .actions
+      float: left
+      input
+
+  .share_container
+    position: absolute
+    z-index: 100
+    width: 67em
+    h2
+      font-size: 6em
+      margin-bottom: .4em
+    p
+      font-size: 1.8em
+      margin-bottom: 1em
+    .share_label
+      text-align: right
+      font-size: 29px
+      height: 58px
+      line-height: 58px
+      float: left
+      -webkit-transition:background-position 5s ease
+    a
+      background: image-url('share_icons.png') no-repeat
+      display: inline-block
+      width: 58px
+      height: 58px
+      margin: 0 20px
+      text-indent: -99999px
+      &.facebook
+        background-position: 0 0
+        &:hover
+          background-position: 0 -58px
+      &.twitter
+        background-position: -58px 0
+        &:hover
+          background-position: -58px -58px
+      &.vk
+        background-position: -116px 0
+        &:hover
+          background-position: -116px -58px
+
+.gm-style-iw
+  color: #444
+  width: auto !important

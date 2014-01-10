@@ -1,0 +1,25 @@
+defaults: &defaults
+mailer: &mailer_defaults
+  host: '151.236.222.196'
+  address: 'smtp.gmail.com'
+  port: 587
+  domain: '151.236.222.196'
+  authentication: 'plain'
+  enable_starttls_auto: 'true'
+  user_name: 'user@.mail.com'
+  password: 'password'
+  rails_port: 3001
+
+development:
+  <<: *defaults
+  mailer:
+    <<: *mailer_defaults
+test:
+  <<: *defaults
+  mailer:
+    <<: *mailer_defaults
+
+production:
+  <<: *defaults
+  mailer:
+    <<: *mailer_defaults
