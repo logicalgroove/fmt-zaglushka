@@ -37,7 +37,7 @@ $ ->
       draggable: true
       disableDoubleClickZoom: false
       panControl: false
-      zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER }
+      zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER, style: google.maps.ZoomControlStyle.SMALL }
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
