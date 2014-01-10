@@ -59,5 +59,9 @@
           = link_to 'Запросить инвайт', '#', :class => 'btn btn-large invite_final'
         .users.email_form
           = render 'users/form'
+      .social_links
+        = link_to 'Facebook', 'https://www.facebook.com/followmytravel', class: 'icon facebook', target: '_blank'
+        = link_to 'Instagram', 'http://instagram.com/fmytravel', class: 'icon instagram', target: '_blank'
+        = mail_to 'hello@followmytravel.com', nil, class: 'icon email', title: 'hello@followmytravel.com'
 
     #map-canvas-main
