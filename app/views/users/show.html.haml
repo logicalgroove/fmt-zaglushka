@@ -45,6 +45,6 @@
 
   = link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", target: '_blank', class: 'facebook'
   = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
-  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk'
+  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
 
 #map-canvas
