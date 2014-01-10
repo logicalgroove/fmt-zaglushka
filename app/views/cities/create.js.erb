@@ -2,6 +2,7 @@ $('#city_name_auto').val('')
 show_city_in_maps('<%= "#{city.name}, #{city.country.name}" %>', '<%= city.latitude %>', '<%= city.longitude %>', true)
 
 $('.counters.hide').show('drop', {direction: 'up'})
+$('.finish_my_map.hide').show('drop', {direction: 'up'})
 
 before_cities = $('#cities_count').html()
 before_countries = $('#countries_count').html()

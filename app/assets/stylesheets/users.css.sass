@@ -10,8 +10,8 @@
         width: 12em
         &.outside
           position: absolute
-          top: 10%
-          right: 10%
+          top: 1em
+          right: 7em
 
       .dialog
         #city_name_auto
@@ -20,7 +20,7 @@
     .counters
       float: right
       text-align: right
-      width: 15em
+      width: auto
       .counter
         margin-left: 2em
         float: right
@@ -45,10 +45,14 @@
 
   .share_container
     position: absolute
-    bottom: 30px
-    right: 20px
     z-index: 100
-    width: 530px
+    width: 67em
+    h2
+      font-size: 6em
+      margin-bottom: .4em
+    p
+      font-size: 1.8em
+      margin-bottom: 1em
     .share_label
       text-align: right
       font-size: 29px
@@ -58,11 +62,10 @@
       -webkit-transition:background-position 5s ease
     a
       background: image-url('share_icons.png') no-repeat
-      display: block
-      float: left
+      display: inline-block
       width: 58px
       height: 58px
-      margin-left: 10px
+      margin: 0 20px
       text-indent: -99999px
       &.facebook
         background-position: 0 0
