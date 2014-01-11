@@ -1,13 +1,14 @@
 - content_for :head do
   %meta{content: "#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", property: "og:image"}/
-  %meta{content: "Моя карта путешествий", property: "og:title"}/
+  %meta{content: "Follow My Travel", property: "og:title"}/
   %meta{content: "#{request.original_url}", property: "og:url"}/
   %meta{content: "followmytravel.com", property: "og:site_name"}/
   %meta{content: user.share_text , property: "og:description"}/
 
 .over_map
   .header
-    = link_to 'Follow My Travel', root_path, class: 'logo-small left'
+    .logo-small
+      = link_to image_tag('fmt-logo-small.png'), root_path
     %p#notice= notice
 
     - if current_user
@@ -27,7 +28,6 @@
         .users.email_form
           = render 'users/form'
 
-
     .counters{class: ('hide' unless user.cities?)}
       .counter
         .label городов
@@ -37,10 +37,14 @@
         .label стран
         #countries_count.number= user.countries_count
 
-.share_container
-  .share_label Поделись своей картой с миром!
+= link_to 'Моя карта готова', '#', class: 'btn finish_my_map hide'
+
+.dialog.share_container.hide.align-center
+  %h2 Поделись своей картой с миром!
+  %p Проверь почту — ссылка на карту уже там!
+
   = link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", target: '_blank', class: 'facebook'
   = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
-  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Моя карта путешествий&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk'
+  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
 
 #map-canvas

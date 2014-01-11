@@ -28,6 +28,7 @@ $ ->
     geocoder = new google.maps.Geocoder()
     mapOptions =
       zoom: 3
+      minZoom: 2
       center: new google.maps.LatLng(36, -10)
       scrollwheel: true
       navigationControl: false
@@ -37,7 +38,7 @@ $ ->
       draggable: true
       disableDoubleClickZoom: false
       panControl: false
-      zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER }
+      zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_CENTER, style: google.maps.ZoomControlStyle.SMALL }
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
@@ -52,6 +53,9 @@ $ ->
       map: map
       icon: pinImage
       position: new google.maps.LatLng(latitude, longitude)
+      labelContent : 'test'
+      labelAnchor: new google.maps.LatLng(latitude, longitude)
+      labelClass: "labels"
     )
     marker.setAnimation(google.maps.Animation.DROP)
     iw = new google.maps.InfoWindow({content: address})
@@ -76,6 +80,7 @@ $ ->
     { featureType: 'administrative.country', elementType: 'geometry', stylers: [ { visibility: "on"  } ] },
     { featureType: 'administrative.country', elementType: 'geometry.stroke', stylers: [ { weight: 1 }, { color: '#2e2e2e' } ] },
     { featureType: 'administrative.country', elementType: 'labels', stylers: [ { visibility: "off" } ] },
+    { featureType: 'administrative.locality', elementType: 'labels', stylers: [ { visibility: "off" } ] },
     { featureType: 'administrative.neighborhood', stylers: [ { visibility: "off" } ] },
     { featureType: 'administrative.province', elementType: "labels", stylers: [ { visibility: "off" } ] }
     { featureType: 'administrative.land_parcel', elementType: "geometry", stylers: [ { visibility: "off" } ] },
@@ -89,5 +94,10 @@ $ ->
 
   $('.invite_final').click ->
     $('.text_container').show()
+
+  $('.finish_my_map').click ->
+    $(this).hide()
+    $('#city_name_auto').hide()
+    $('.share_container').center().show('drop', {direction: 'up'})
 
 root = exports ? this

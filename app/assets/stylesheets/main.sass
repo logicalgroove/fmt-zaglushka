@@ -175,6 +175,38 @@ input.text
   &.talk
     width: 15.7em
     height: 15.7em
+  &.down, &.facebook, &.instagram, &.email
+    background-size: 100%
+    background-repeat: no-repeat
+    background-position: top
+    position: absolute
+    width: 6.4em
+    height: 6.4em
+    &:hover
+      background-position: bottom
+  &.down
+    background-image: image-url('icon-down.png')
+    bottom: 1em
+  &.facebook, &.instagram, &.email
+    position: static
+    width: 5.8em
+    height: 5.8em
+  &.facebook
+    background-image: image-url('icon-facebook.png')
+  &.instagram
+    background-image: image-url('icon-instagram.png')
+  &.email
+    background-image: image-url('icon-email.png')
+
+.social_links
+  position: absolute
+  text-indent: -99999px
+  right: 1em
+  bottom: 1em
+  width: 6.4em
+  a
+    display: block
+    margin-bottom: 1em
 
 .over_map
   z-index: 100
@@ -201,3 +233,9 @@ input.text
   border-radius: 30px
   h3
     margin-bottom: 20px
+
+.finish_my_map
+  position: absolute
+  bottom: 1em
+  right: 1em
+  z-index: 100

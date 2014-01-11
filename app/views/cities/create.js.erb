@@ -2,6 +2,7 @@ $('#city_name_auto').val('')
 show_city_in_maps('<%= "#{city.name}, #{city.country.name}" %>', '<%= city.latitude %>', '<%= city.longitude %>', true)
 
 $('.counters.hide').show('drop', {direction: 'up'})
+$('.finish_my_map.hide').show('drop', {direction: 'up'})
 
 before_cities = $('#cities_count').html()
 before_countries = $('#countries_count').html()
@@ -20,3 +21,8 @@ if ($('#map_welcome').length > 0) {
     $('#map_welcome').remove();
   });
 }
+
+// Update share text
+$('.share_container a.twitter').attr('href', "https://twitter.com/intent/tweet?&text=<%= user.share_text %> <%= request.original_url %>")
+$('.share_container a.vk').attr('href', "http://vk.com/share.php?url=<%= request.original_url %>&title=Follow My Travel&description=<%= user.share_text %>&image=<%= request.protocol %><%= request.host_with_port %>/<%= user.world_map_name %>")
+$("meta[property='og:description']").attr('content', '<% user.share_text %>');
