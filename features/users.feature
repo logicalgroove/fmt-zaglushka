@@ -135,3 +135,9 @@ Feature: User enter email
     And I wait for ajax request to finish
     Then I should see "Ура! Мы рады, что ты с нами!"
 
+  @javascript
+  Scenario: User visit short link
+    Given there is a user with "zom@brain.com" email
+    When I visit short link "blah"
+    Then I should see 'Ура! Мы рады, что ты с нами!'
+
