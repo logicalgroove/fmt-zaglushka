@@ -26,6 +26,7 @@ end
 
 group :development do
   gem 'haml-rails'
+  gem 'capistrano', '~> 3.0.1'
 end
 
 group :development, :test do
