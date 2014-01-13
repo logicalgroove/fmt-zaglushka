@@ -12,13 +12,16 @@
     %p#notice= notice
 
     - if current_user
-      #map_welcome.dialog.align-center
-        %h2 Ура! Мы рады, что ты с нами!
-        %h3
-          Интересно в скольких городах и странах ты бы?
-          %br
-          Давай посчитаем!
-        = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
+      - if user.city_ids.present?
+        = text_field_tag :city_name_auto, '', class: 'text outside', placeholder: 'Введи город'
+      -else
+        #map_welcome.dialog.align-center
+          %h2 Ура! Мы рады, что ты с нами!
+          %h3
+            Интересно в скольких городах и странах ты бы?
+            %br
+            Давай посчитаем!
+          = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
     - else
       .right
         = link_to "Стань участником!", '#', :class => 'btn btn-large invite_final'
