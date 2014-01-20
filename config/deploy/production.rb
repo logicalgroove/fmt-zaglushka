@@ -23,8 +23,9 @@ server '88.80.184.98', user: 'deploy', roles: %w{web app}
 # set it globally
 set :ssh_options, {
   keys: %w(/home/pair/.ssh/id_rsa),
-  forward_agent: false,
-  auth_methods: %w(password)
+  forward_agent: false
+  #auth_methods: %w(password),
+  #verbose: :debug
 }
 # and/or per server
 # server 'example.com',
