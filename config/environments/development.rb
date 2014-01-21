@@ -38,17 +38,16 @@ Zaglushka::Application.configure do
 
   # to have absolute URLs for images and links in emails
   config.action_mailer.default_url_options = {
-    :host     => Settings.mailer.host,
-    :protocol => 'http',
-    :port     => Settings.mailer.rails_port
+    :host       => Settings.mailer.host,
+    :protocol   => 'http',
+    :port       => Settings.mailer.rails_port
   }
-
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.asset_host = 'http://followmytravel.com'
+  config.action_mailer.delivery_method = :smtp
   # change to true to allow email to be sent during development
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-
   config.action_mailer.smtp_settings = {
     address:              Settings.mailer.address,
     port:                 Settings.mailer.port,
