@@ -50,6 +50,25 @@ Zaglushka::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = {
+    :host     => Settings.mailer.host,
+    :protocol => 'http',
+    :port     => Settings.mailer.rails_port
+  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+    address:              Settings.mailer.address,
+    port:                 Settings.mailer.port,
+    domain:               Settings.mailer.domain,
+    authentication:       Settings.mailer.authentication,
+    enable_starttls_auto: Settings.mailer.enable_starttls_auto,
+    user_name:            Settings.mailer.user_name,
+    password:             Settings.mailer.password
+  }
 
   # Enable threaded mode
   # config.threadsafe!
