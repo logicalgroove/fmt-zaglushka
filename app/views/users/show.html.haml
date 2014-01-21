@@ -14,7 +14,7 @@
     - if current_user
       - if user.city_ids.present?
         = text_field_tag :city_name_auto, '', class: 'text outside', placeholder: 'Введи город'
-      -else
+      - else
         #map_welcome.dialog.align-center
           %h2 Ура! Мы рады, что ты с нами!
           %h3
