@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  let(:user) {User.new(email: "user1@mail.com")}
+  let(:user) {User.new(email: "user@mail.com")}
   subject { user }
   it { should respond_to(:email) }
   it { should be_valid}

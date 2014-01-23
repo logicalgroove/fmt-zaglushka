@@ -136,6 +136,17 @@ Feature: User enter email
     Then I should see "Ура! Мы рады, что ты с нами!"
 
   @javascript
+  Scenario: User should not see welcome text if he has cities
+    Given I exist as a user
+    When I visit my user page
+    And I search google maps for "Barcelona, Spain"
+    And I wait for ajax request to finish
+    And I search google maps for "Odessa, Ukraine"
+    And I wait for ajax request to finish
+    And I visit my user page
+    Then I should not see "Ура! Мы рады, что ты с нами!"
+
+  @javascript
   Scenario: User visit short link
     Given there is a user with "zom@brain.com" email
     When I visit short link "blah"
