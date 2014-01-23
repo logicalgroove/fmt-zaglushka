@@ -33,11 +33,11 @@
 
     .counters{class: ('hide' unless user.cities?)}
       .counter
-        .label городов
+        .label ГОРОДОВ
         #cities_count.number= user.city_count
 
       .counter
-        .label стран
+        .label СТРАН
         #countries_count.number= user.countries_count
 
 = link_to 'Моя карта готова', '#', class: 'btn finish_my_map hide'

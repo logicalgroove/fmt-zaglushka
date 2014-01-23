@@ -146,3 +146,9 @@ Feature: User enter email
     And I visit my user page
     Then I should not see "Ура! Мы рады, что ты с нами!"
 
+  @javascript
+  Scenario: User visit short link
+    Given there is a user with "zom@brain.com" email
+    When I visit short link "blah"
+    Then I should see 'Ура! Мы рады, что ты с нами!'
+

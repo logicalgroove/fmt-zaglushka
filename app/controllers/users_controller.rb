@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   expose(:user)
   expose(:users)
+  expose(:short)
 
   def show
     gon.cities = []
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     respond_to do |format|
+      user.short_id = Digest::SHA1.hexdigest([Time.now, user.email].join)[0..4]
       if user.save
         UserMailer.registration_confirmation(user).deliver
         session[:user_id] = user.id

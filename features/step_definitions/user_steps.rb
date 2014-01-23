@@ -21,8 +21,13 @@ When /^I visit my user page$/ do
   visit user_path(@user)
 end
 
+When /^I visit short link "(.*?)"$/  do |short_id|
+  user = User.where(short_id: short_id).last
+  visit user_path(user)
+end
+
 Given /^there is a user with "(.*?)" email$/ do |email|
-  @user = FactoryGirl.create(:user, email: email)
+  @user = FactoryGirl.create(:user, email: email, short_id: 'blah')
   mock_sessions
 end
 
