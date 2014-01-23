@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta
+    %title
+      Follow My Travel
+    %meta{content: "initial-scale=1.0, width=device-width", name: "viewport"}
+    = stylesheet_link_tag "admin/application", :media => "all"
+    = csrf_meta_tags
+    = include_gon
+    = yield :head
+%body{class: controller.controller_name}
+  = yield
