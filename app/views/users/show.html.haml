@@ -12,13 +12,16 @@
     %p#notice= notice
 
     - if current_user
-      #map_welcome.dialog.align-center
-        %h2 Ура! Мы рады, что ты с нами!
-        %h3
-          Интересно в скольких городах и странах ты бы?
-          %br
-          Давай посчитаем!
-        = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
+      - if user.city_ids.present?
+        = text_field_tag :city_name_auto, '', class: 'text outside', placeholder: 'Введи город'
+      - else
+        #map_welcome.dialog.align-center
+          %h2 Ура! Мы рады, что ты с нами!
+          %h3
+            Интересно в скольких городах и странах ты бы?
+            %br
+            Давай посчитаем!
+          = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
     - else
       .right
         = link_to "Стань участником!", '#', :class => 'btn btn-large invite_final'
@@ -30,11 +33,11 @@
 
     .counters{class: ('hide' unless user.cities?)}
       .counter
-        .label городов
+        .label ГОРОДОВ
         #cities_count.number= user.city_count
 
       .counter
-        .label стран
+        .label СТРАН
         #countries_count.number= user.countries_count
 
 = link_to 'Моя карта готова', '#', class: 'btn finish_my_map hide'
@@ -45,6 +48,6 @@
 
   = link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", target: '_blank', class: 'facebook'
   = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
-  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk'
+  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
 
 #map-canvas

@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   before_validation :downcase_email
   field :email, type: String
+  field :short_id, type: String
   validates :email,:presence => true,
                    :format => {:with =>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},
                    :uniqueness => true
