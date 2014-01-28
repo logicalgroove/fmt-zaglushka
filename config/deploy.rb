@@ -25,6 +25,10 @@ set :keep_releases, 3
 #set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 #SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
 
+task :reload_nginx, :roles => :app do
+  sudo 'service nginx restart'
+end
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
@@ -48,11 +52,8 @@ namespace :deploy do
     end
   end
 
-  task :reload_nginx, :roles => :app do
-    sudo 'service nginx reload'
-  end
-
   after :finishing, 'deploy:cleanup'
-  after "deploy", "reload_nginx"
 
 end
+
+after "deploy", "reload_nginx"
