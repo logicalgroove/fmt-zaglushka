@@ -55,6 +55,7 @@ Zaglushka::Application.configure do
     :protocol => 'http',
     :port     => Settings.mailer.rails_port
   }
+  config.action_mailer.asset_host = 'http://followmytravel.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
