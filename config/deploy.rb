@@ -29,7 +29,6 @@ namespace :deploy do
       execute :touch, release_path.join('tmp/restart.txt')
     end
   end
-
   task :whoami do
     on roles(:all) do
       execute :whoami
