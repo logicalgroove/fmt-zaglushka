@@ -11,6 +11,10 @@ set :format, :pretty
 set :log_level, :debug
 set :pty, true
 
+set :rails_env, 'production'
+set :assets_roles, [:web, :app]
+set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
+
 set :linked_files, %w{config/application.yml config/mongoid.yml}
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
