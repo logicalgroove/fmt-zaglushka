@@ -41,6 +41,8 @@ GEM
       rails
     arel (3.0.2)
     awesome_print (1.2.0)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.0.4)
     capistrano (3.0.1)
       i18n
@@ -230,6 +232,7 @@ PLATFORMS
 DEPENDENCIES
   animate-rails
   awesome_print
+  bootstrap-sass
   capistrano (~> 3.0.1)
   capybara-screenshot
   capybara-webkit

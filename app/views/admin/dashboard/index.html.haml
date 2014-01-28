@@ -1,0 +1,16 @@
+%h3"USERS"
+.container-fluid.table-responsive
+  %table.table-scroll
+    %tr
+      %th email
+      %th created at
+      %th countries
+      %th cities
+    - for user in User
+      %tr
+        %td= link_to user.email, user
+        %td= user.created_at
+        %td= user.countries.map(&:name).join(',')
+        %td= user.cities.map(&:name).join(',')
+
+
