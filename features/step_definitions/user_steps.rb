@@ -21,6 +21,12 @@ When /^I visit my user page$/ do
   visit user_path(@user)
 end
 
+When /^I visit admin page$/ do
+  encoded_login = ["admin:secret"].pack("m*")
+  page.driver.header 'Authorization', "Basic #{encoded_login}"
+  visit '/admin'
+end
+
 When /^I visit short link "(.*?)"$/  do |short_id|
   user = User.where(short_id: short_id).last
   visit user_path(user)

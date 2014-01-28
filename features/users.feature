@@ -152,3 +152,13 @@ Feature: User enter email
     When I visit short link "blah"
     Then I should see 'Ура! Мы рады, что ты с нами!'
 
+  Scenario: Visit admin page
+    Given there is a user with "zombie@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    When I visit admin page
+    Then I should see "zombie@brain.com"
+    And I should see "Barcelona"
+    And I should see "Odessa"
