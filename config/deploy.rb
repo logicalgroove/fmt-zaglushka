@@ -48,6 +48,11 @@ namespace :deploy do
     end
   end
 
+  task :reload_nginx, :roles => :app do
+    sudo 'service nginx reload'
+  end
+
   after :finishing, 'deploy:cleanup'
+  after "deploy", "reload_nginx"
 
 end
