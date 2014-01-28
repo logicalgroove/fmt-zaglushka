@@ -18,6 +18,10 @@ gem 'settingslogic'
 gem 'mini_magick'
 gem 'proj4rb'
 gem 'mail_view', git: 'git://github.com/37signals/mail_view.git', ref: '6a4bc7f01a'
+gem 'capistrano', '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -28,10 +32,6 @@ end
 
 group :development do
   gem 'haml-rails'
-  gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rvm'
 end
 
 group :development, :test do
