@@ -17,6 +17,10 @@ set :linked_files, %w{config/application.yml config/mongoid.yml}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 3
 
+set :rvm_ruby_version, 'ruby-2.0.0-p247@fmt-zaglushka'
+set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+SSHKit.config.command_map[:rake] = "#{fetch(:default_env)[:rvm_bin_path]}/rvm ruby-#{fetch(:rvm_ruby_version)} do bundle exec rake"
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do

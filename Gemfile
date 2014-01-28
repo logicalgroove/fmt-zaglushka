@@ -30,6 +30,8 @@ group :development do
   gem 'haml-rails'
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
 
 group :development, :test do
