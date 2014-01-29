@@ -12,7 +12,8 @@
         FB.ui({
           method: 'feed',
           link: '<%= request.original_url %>',
-          description: '<%= user.share_text %>'
+          description: '<%= user.share_text %>',
+          picture: '<%= "#{request.protocol}#{request.host_with_port}/#{user.world_map_name}" %>'
         }, function(response){});
         false
       })
