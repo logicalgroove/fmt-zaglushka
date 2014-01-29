@@ -24,7 +24,7 @@ class User
   def world_map_name
     user_map = "world_map_#{id.to_s}.jpg"
     default_map = 'world_map.jpg'
-    return File.file?("public/#{user_map}") ? user_map : default_map
+    return File.file?("public/maps/#{user_map}") ? user_map : default_map
   end
 
   def save_mini_map(city)
@@ -36,7 +36,7 @@ class User
       c.geometry "+#{city.longitude_in_px}+#{city.latitude_in_px}"
     end
 
-    file_name = "public/world_map_#{id.to_s}.jpg"
+    file_name = "public/maps/world_map_#{id.to_s}.jpg"
 
     map.write file_name
     File.chmod(0644, file_name)
