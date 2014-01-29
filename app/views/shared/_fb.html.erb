@@ -1,0 +1,22 @@
+<div id="fb-root"></div>
+<script>
+  $(document).ready(function() {
+    $.ajaxSetup({ cache: true });
+    $.getScript('//connect.facebook.net/ru_RU/all.js', function(){
+      FB.init({
+        appId: '<%= Settings.facebook_id %>',
+      });
+      $('#loginbutton,#feedbutton').removeAttr('disabled');
+
+      $('.facebook').click(function(){
+        FB.ui({
+          method: 'feed',
+          link: '<%= request.original_url %>',
+          description: '<%= user.share_text %>'
+        }, function(response){});
+        false
+      })
+    });
+  });
+
+</script>

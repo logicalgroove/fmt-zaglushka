@@ -12,6 +12,7 @@ mailer: &mailer_defaults
 
 development:
   <<: *defaults
+  facebook_id: 'some_id'
   mailer:
     <<: *mailer_defaults
 test:
@@ -21,5 +22,6 @@ test:
 
 production:
   <<: *defaults
+  facebook_id: 'some_id'
   mailer:
     <<: *mailer_defaults
