@@ -38,8 +38,8 @@ describe User do
     it "create a jpeg" do
       user.cities << city
       user.save_mini_map(city)
-      File.exist?("public/world_map_#{user.id.to_s}.jpg").should be_true 
-      File.delete("public/world_map_#{user.id.to_s}.jpg")
+      File.exist?("public/maps/world_map_#{user.id.to_s}.jpg").should be_true 
+      File.delete("public/maps/world_map_#{user.id.to_s}.jpg")
     end
     it "should contain the right amount of cities and countries" do
       some_city  = FactoryGirl.create(:city, country: country, name: 'Barcelona')

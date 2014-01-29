@@ -16,7 +16,7 @@ set :assets_roles, [:web, :app]
 set :normalize_asset_timestamps, %{public/images public/javascripts public/stylesheets}
 
 set :linked_files, %w{config/application.yml config/mongoid.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{public/maps}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 3
