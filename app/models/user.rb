@@ -36,7 +36,10 @@ class User
       c.geometry "+#{city.longitude_in_px}+#{city.latitude_in_px}"
     end
 
-    map.write "public/world_map_#{id.to_s}.jpg"
+    file_name = "public/world_map_#{id.to_s}.jpg"
+
+    map.write file_name
+    File.chmod(0644, file_name)
   end
 
   def share_text
