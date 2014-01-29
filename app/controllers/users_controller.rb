@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     gon.cities = []
+    gon.cities_count = user.city_count
+    gon.map_image = user.world_map_name
     gon.user_id = user.id.to_s
     user.cities.each do |city|
       gon.cities.push({name: "#{city.name}, #{city.country.name}", latitude: city.latitude, longitude: city.longitude})

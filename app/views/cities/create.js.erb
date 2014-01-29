@@ -22,6 +22,8 @@ if ($('#map_welcome').length > 0) {
   });
 }
 
-// Update share text
+// Update share info
+gon.cities_count = <%= user.city_count %>
+gon.map_image = <%= user.world_map_name %>
 $('.share_container a.twitter').attr('href', "https://twitter.com/intent/tweet?&text=<%= user.share_text %> <%= request.original_url %>")
 $('.share_container a.vk').attr('href', "http://vk.com/share.php?url=<%= request.original_url %>&title=Follow My Travel&description=<%= user.share_text %>&image=<%= request.protocol %><%= request.host_with_port %>/<%= user.world_map_name %>")
