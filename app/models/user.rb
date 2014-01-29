@@ -28,7 +28,7 @@ class User
   end
 
   def save_mini_map(city)
-    map = MiniMagick::Image.open("public/#{world_map_name}")
+    map = MiniMagick::Image.open("public/maps/#{world_map_name}")
     marker = MiniMagick::Image.open('app/assets/images/pin.png')
 
     map = map.composite(marker) do |c|
