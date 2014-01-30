@@ -24,11 +24,11 @@ class User
   def world_map_name
     user_map = "world_map_#{id.to_s}.jpg"
     default_map = 'world_map.jpg'
-    return File.file?("public/maps/#{user_map}") ? user_map : default_map
+    return File.file?("public/maps/#{user_map}") ? "maps/#{user_map}" : default_map
   end
 
   def save_mini_map(city)
-    map = MiniMagick::Image.open("public/maps/#{world_map_name}")
+    map = MiniMagick::Image.open("public/#{world_map_name}")
     marker = MiniMagick::Image.open('app/assets/images/pin.png')
 
     map = map.composite(marker) do |c|
