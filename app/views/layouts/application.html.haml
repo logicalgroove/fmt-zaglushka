@@ -22,5 +22,4 @@
 %body{class: controller.controller_name}
   = yield :body
   = yield
-- if Rails.env.production?
-  = render :partial => 'shared/ga'
+= render :partial => 'shared/ga' if Rails.env.production?
