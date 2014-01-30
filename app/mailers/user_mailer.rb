@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "hello@followmytravel.com"
+  default from: "Follow My Travel"
   layout 'mailer_default'
 
   def registration_confirmation(user)
