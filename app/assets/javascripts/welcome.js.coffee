@@ -8,11 +8,6 @@ $ ->
   $(window).resize ->
     calculate_font_size()
 
-  $('.invite_me').click ->
-    $('.main').moveTo(4)
-    $('.email_form').show()
-    $('.invite_final').hide()
-
   $('.invite_final').click ->
     $(this).hide()
     $('.email_form').show()
