@@ -94,6 +94,9 @@ $ ->
   $('.md1, .md2, .md3').click ->
     $(".main").moveDown()
 
-
+  $('.invite_me').click ->
+    $('.main').moveTo(4)
+    $('.email_form').show()
+    $('.invite_final').hide()
 
 root = exports ? this
