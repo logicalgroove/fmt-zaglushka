@@ -13,7 +13,7 @@ class City
 
   IMAGE_GLOBE_SIZE = 1200.0
   IMAGE_GLOBE_CENTER_X = 557.0
-  IMAGE_GLOBE_CENTER_Y = 406.0
+  IMAGE_GLOBE_CENTER_Y = 360.0
   DEGREES_TO_RADIANS = Math::PI / 180
   RADIANS_TO_PIXELS = IMAGE_GLOBE_SIZE / (2.0 * Math::PI)
   GOOGLE_PARAMS = "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs"
