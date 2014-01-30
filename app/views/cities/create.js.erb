@@ -1,4 +1,9 @@
-$('#city_name_auto').val('')
+$('#city_name_auto').blur();
+setTimeout(function(){
+  $('#city_name_auto').val('');
+  $('#city_name_auto').focus();
+},10);
+
 show_city_in_maps('<%= "#{city.name}, #{city.country.name}" %>', '<%= city.latitude %>', '<%= city.longitude %>', true)
 
 $('.counters.hide').show('drop', {direction: 'up'})
