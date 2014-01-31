@@ -26,8 +26,6 @@
             Давай посчитаем!
           = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
     - else
-      .right
-        = link_to "Стань участником!", '#', :class => 'btn btn-large invite_final'
       .text_container.dialog.align-center.hide
         %h2.align-center Уже скоро!
         %h3.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
@@ -44,6 +42,8 @@
         #countries_count.number= user.countries_count
 
 = link_to 'Моя карта готова', '#', class: 'btn finish_my_map hide'
+- unless current_user
+  = link_to "Создай свою карту!", '#', :class => 'btn btn-large invite_final make_your_map'
 
 .dialog.share_container.hide.align-center
   %h2 Поделись своей картой с миром!
