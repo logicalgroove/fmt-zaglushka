@@ -44,6 +44,35 @@ $ ->
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
     map.setOptions styles: styles
 
+    strictBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(-85, -180),
+      new google.maps.LatLng(85, 180)
+    )
+
+    google.maps.event.addListener map, "bounds_changed", ->
+      console.log 'moved'
+      mapBounds = map.getBounds()
+      map_SW_lat = mapBounds.getSouthWest().lat()
+      map_SW_lng = mapBounds.getSouthWest().lng()
+      map_NE_lat = mapBounds.getNorthEast().lat()
+      map_NE_lng = mapBounds.getNorthEast().lng()
+      maxX = strictBounds.getNorthEast().lng()
+      maxY = strictBounds.getNorthEast().lat()
+      minX = strictBounds.getSouthWest().lng()
+      minY = strictBounds.getSouthWest().lat()
+      return  if strictBounds.contains(mapBounds.getNorthEast()) and strictBounds.contains(mapBounds.getSouthWest())
+
+      # We're out of bounds - Move the map back within the bounds
+      map_SW_lng = minX  if map_SW_lng < minX
+      map_SW_lng = maxX  if map_SW_lng > maxX
+      map_NE_lng = minX  if map_NE_lng < minX
+      map_NE_lng = maxX  if map_NE_lng > maxX
+      map_SW_lat = minY  if map_SW_lat < minY
+      map_SW_lat = maxY  if map_SW_lat > maxY
+      map_NE_lat = minY  if map_NE_lat < minY
+      map_NE_lat = maxY  if map_NE_lat > maxY
+      map.panToBounds new google.maps.LatLngBounds(new google.maps.LatLng(map_SW_lat, map_SW_lng), new google.maps.LatLng(map_NE_lat, map_NE_lng))
+
   root.show_city_in_maps = (address, latitude, longitude, zoom) ->
     zoom = (if typeof zoom isnt "undefined" then zoom else false)
 
