@@ -14,7 +14,7 @@
       = link_to image_tag('fmt-logo-small.png'), root_path
     %p#notice= notice
 
-    - if current_user
+    - if is_logged_in
       - if user.city_ids.present?
         = text_field_tag :city_name_auto, '', class: 'text outside', placeholder: 'Введи город'
       - else
@@ -41,8 +41,9 @@
         .label СТРАН
         #countries_count.number= user.countries_count
 
-= link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
-- unless current_user
+- if is_logged_in
+  = link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
+- else
   = link_to "Создай свою карту!", '#', :class => 'btn btn-large invite_final make_your_map'
 
 .dialog.share_container.hide.align-center
