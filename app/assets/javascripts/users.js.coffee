@@ -100,4 +100,24 @@ $ ->
     $('#city_name_auto').hide()
     $('.share_container').center().show('drop', {direction: 'up'})
 
+  $('.instagram').click ->
+    $('.overlay').show()
+    $('.logo-small').hide()
+    $('.counters').hide()
+
+    img = $("<img />").attr("src", "/maps/instagram_map_#{gon.user_id}.jpg").load(->
+      $('.instagram_map').html img
+      $('.instagram_container').center().show('drop', {direction: 'up'})
+    )
+
+    $('.share_container').center().hide()
+
+  $('.overlay').click ->
+    $(this).hide()
+    $('.instagram_container').hide()
+    $('.logo-small').show()
+    $('.counters').show()
+    $('#city_name_auto').show()
+    $('.finish_my_map').show()
+
 root = exports ? this

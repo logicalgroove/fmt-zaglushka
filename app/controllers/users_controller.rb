@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       user.short_id = Digest::SHA1.hexdigest([Time.now, user.email].join)[0..4]
       if user.save
+        user.create_image_world_map
         UserMailer.registration_confirmation(user).deliver
         session[:user_id] = user.id
         format.js { render js:  "window.location.replace('#{user_path(user)}')" }

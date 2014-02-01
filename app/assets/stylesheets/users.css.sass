@@ -43,7 +43,7 @@
       float: left
       input
 
-  .share_container
+  .share_container, .instagram_container
     position: absolute
     z-index: 100
     width: 67em
@@ -79,6 +79,28 @@
         background-position: -116px 0
         &:hover
           background-position: -116px -58px
+      &.instagram
+        background-position: -174px 0
+        &:hover
+          background-position: -174px -58px
+
+.instagram_container
+  .instagram_map
+    padding: 2px
+    background: #fff
+    margin: 0 auto
+    width: 50em
+    img
+      width: 100%
+
+.overlay
+  background-image: image-url('alpha-40.png')
+  position: absolute
+  z-index: 11
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
 
 .gm-style-iw
   color: #444
