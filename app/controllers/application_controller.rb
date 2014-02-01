@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
+  helper_method :is_logged_in
   helper_method :mobile?
 
   private
@@ -28,6 +29,10 @@ class ApplicationController < ActionController::Base
   def mobile?
     !!(request.user_agent =~ /Mobile|webOS/)
     #true
+  end
+
+  def is_logged_in
+    user == current_user
   end
 
 end
