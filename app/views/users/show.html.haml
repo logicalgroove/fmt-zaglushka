@@ -21,7 +21,7 @@
         #map_welcome.dialog.align-center
           %h2 Ура! Мы рады, что ты с нами!
           %h3
-            Интересно в скольких городах и странах ты бы?
+            Интересно в скольких городах и странах ты был?
             %br
             Давай посчитаем!
           = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
@@ -41,7 +41,7 @@
         .label СТРАН
         #countries_count.number= user.countries_count
 
-= link_to 'Моя карта готова', '#', class: 'btn finish_my_map hide'
+= link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
 - unless current_user
   = link_to "Создай свою карту!", '#', :class => 'btn btn-large invite_final make_your_map'
 
@@ -50,7 +50,13 @@
   %p Проверь почту — ссылка на карту уже там!
 
   = link_to 'Facebook', "#", class: 'facebook'
+  = link_to 'Instagram', '#', class: 'instagram'
   = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
   = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
 
+.dialog.instagram_container.hide.align-center
+  %h3 Сохрани эту фотографию для инстаграма:
+  .instagram_map
+
+.overlay.hide
 #map-canvas

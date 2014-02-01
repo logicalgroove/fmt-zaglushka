@@ -42,8 +42,6 @@ Feature: User enter email
     And should be only one country "Spain" in database
     And I should have "Barcelona" as unique city in my travelled cities
     And I should have "Spain" as unique country in my travelled countries
-    And I should see "1" country on my page
-    And I should see "1" city on my page
 
   @javascript
   Scenario: User should get error message when enters invalid email

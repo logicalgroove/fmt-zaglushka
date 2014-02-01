@@ -36,10 +36,13 @@ describe User do
     let(:country) { FactoryGirl.create(:country) }
     let(:city) { FactoryGirl.create(:city, country: country) }
     it "create a jpeg" do
+      user.create_image_world_map
       user.cities << city
-      user.save_mini_map(city)
+      user.add_city_to_image_world_map(city)
       File.exist?("public/maps/world_map_#{user.id.to_s}.jpg").should be_true 
+      File.exist?("public/maps/instagram_map_#{user.id.to_s}.jpg").should be_true 
       File.delete("public/maps/world_map_#{user.id.to_s}.jpg")
+      File.delete("public/maps/instagram_map_#{user.id.to_s}.jpg")
     end
     it "should contain the right amount of cities and countries" do
       some_city  = FactoryGirl.create(:city, country: country, name: 'Barcelona')

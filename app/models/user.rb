@@ -8,6 +8,7 @@ class User
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :countries
 
+
   def add_city(city)
     self.cities << city
     self.save
@@ -27,8 +28,17 @@ class User
     return File.file?("public/maps/#{user_map}") ? "maps/#{user_map}" : default_map
   end
 
-  def save_mini_map(city)
-    map = MiniMagick::Image.open("public/#{world_map_name}")
+  def create_image_world_map
+    file_name = "public/maps/world_map_#{id.to_s}.jpg"
+    map = MiniMagick::Image.open("public/world_map.jpg")
+    map.write file_name
+    File.chmod(0644, file_name)
+  end
+
+  def add_city_to_image_world_map(city)
+    file_name = "public/maps/world_map_#{id.to_s}.jpg"
+
+    map = MiniMagick::Image.open(file_name)
     marker = MiniMagick::Image.open('app/assets/images/pin.png')
 
     map = map.composite(marker) do |c|
@@ -36,9 +46,61 @@ class User
       c.geometry "+#{city.longitude_in_px}+#{city.latitude_in_px}"
     end
 
-    file_name = "public/maps/world_map_#{id.to_s}.jpg"
-
     map.write file_name
+    File.chmod(0644, file_name)
+    save_instagram_map
+  end
+
+  def save_instagram_map
+    square = MiniMagick::Image.open('public/map_square.jpg')
+    map = MiniMagick::Image.open("public/maps/world_map_#{id.to_s}.jpg")
+    logo = MiniMagick::Image.open('app/assets/images/fmt-logo-small.png')
+    map.resize('800x800')
+
+    square = square.composite(map) do |c|
+      c.compose "Over"
+      c.geometry "+0+208"
+    end
+
+    square = square.composite(logo) do |c|
+      c.compose "Over"
+      c.geometry "+40+40"
+    end
+
+    square.combine_options do |c|
+      c.gravity 'Southwest'
+      c.font "app/assets/fonts/pfhandbookpro-thin-webfont.ttf"
+      c.pointsize '180'
+      c.draw "text 40,50 '#{city_count}'"
+      c.fill("#fff")
+    end
+
+    square.combine_options do |c|
+      c.gravity 'Southwest'
+      c.font "app/assets/fonts/pfhandbookpro-thin-webfont.ttf"
+      c.pointsize '53'
+      c.draw "text 40,22 'городов'"
+      c.fill("#fff")
+    end
+
+    square.combine_options do |c|
+      c.gravity 'Southwest'
+      c.font "app/assets/fonts/pfhandbookpro-thin-webfont.ttf"
+      c.pointsize '180'
+      c.draw "text 240,50 '#{countries_count}'"
+      c.fill("#fff")
+    end
+
+    square.combine_options do |c|
+      c.gravity 'Southwest'
+      c.font "app/assets/fonts/pfhandbookpro-thin-webfont.ttf"
+      c.pointsize '53'
+      c.draw "text 240,22 'стран'"
+      c.fill("#fff")
+    end
+
+    file_name = "public/maps/instagram_map_#{id.to_s}.jpg"
+    square.write file_name
     File.chmod(0644, file_name)
   end
 
