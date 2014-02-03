@@ -6,8 +6,6 @@
       Follow My Travel
     %meta{content: "initial-scale=1.0, width=device-width", name: "viewport"}
     = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false&key=AIzaSyCaF8hCqtGfJfTk2DDciDSHNctYTF5kLKY&language=ru'
-    = javascript_include_tag 'http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.9/src/markerwithlabel.js'
 
     = javascript_include_tag "application"
     - if mobile?
@@ -16,6 +14,9 @@
     - else
       = javascript_include_tag 'desktop'
       = stylesheet_link_tag 'desktop', :media => "all"
+
+    = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false&key=AIzaSyCaF8hCqtGfJfTk2DDciDSHNctYTF5kLKY&language=ru'
+    = javascript_include_tag 'http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.9/src/markerwithlabel.js'
     = javascript_tag '$.fx.off = true;' if Rails.env.test?
     = csrf_meta_tags
     = include_gon
@@ -23,4 +24,7 @@
 %body{class: controller.controller_name}
   = yield :body
   = yield
+  :javascript
+    if ($('.main').length > 0) { $('.main').hide() }
+
 = render :partial => 'shared/ga' if Rails.env.production?

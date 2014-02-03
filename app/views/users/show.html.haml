@@ -8,56 +8,57 @@
 - content_for :body do
   = render 'shared/fb' unless Rails.env.test?
 
-.over_map
-  .header
-    .logo-small
-      = link_to image_tag('fmt-logo-small.png'), root_path
-    %p#notice= notice
+.main
+  .over_map
+    .header
+      .logo-small
+        = link_to image_tag('fmt-logo-small.png'), root_path
+      %p#notice= notice
 
-    - if is_logged_in
-      - if user.city_ids.present?
-        = text_field_tag :city_name_auto, '', class: 'text outside', placeholder: 'Введи город'
+      - if is_logged_in
+        - if user.city_ids.present?
+          = text_field_tag :city_name_auto, '', class: 'text outside', placeholder: 'Введи город'
+        - else
+          #map_welcome.dialog.align-center
+            %h2 Ура! Мы рады, что ты с нами!
+            %h3
+              Интересно в скольких городах и странах ты был?
+              %br
+              Давай посчитаем!
+            = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
       - else
-        #map_welcome.dialog.align-center
-          %h2 Ура! Мы рады, что ты с нами!
-          %h3
-            Интересно в скольких городах и странах ты был?
-            %br
-            Давай посчитаем!
-          = text_field_tag :city_name_auto, '', class: 'text', placeholder: 'Введи город'
-    - else
-      .text_container.dialog.align-center.hide
-        %h2.align-center Уже скоро!
-        %h3.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
-        .users.email_form
-          = render 'users/form'
+        .text_container.dialog.align-center.hide
+          %h2.align-center Уже скоро!
+          %h3.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
+          .users.email_form
+            = render 'users/form'
 
-    .counters{class: ('hide' unless user.cities?)}
-      .counter
-        .label ГОРОДОВ
-        #cities_count.number= user.city_count
+      .counters{class: ('hide' unless user.cities?)}
+        .counter
+          .label ГОРОДОВ
+          #cities_count.number= user.city_count
 
-      .counter
-        .label СТРАН
-        #countries_count.number= user.countries_count
+        .counter
+          .label СТРАН
+          #countries_count.number= user.countries_count
 
-- if is_logged_in
-  = link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
-- else
-  = link_to "Создай свою карту!", '#', :class => 'btn btn-large invite_final make_your_map'
+  - if is_logged_in
+    = link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
+  - else
+    = link_to "Создай свою карту!", '#', :class => 'btn btn-large invite_final make_your_map'
 
-.dialog.share_container.hide.align-center
-  %h2 Поделись своей картой с миром!
-  %p Проверь почту — ссылка на карту уже там!
+  .dialog.share_container.hide.align-center
+    %h2 Поделись своей картой с миром!
+    %p Проверь почту — ссылка на карту уже там!
 
-  = link_to 'Facebook', "#", class: 'facebook'
-  = link_to 'Instagram', '#', class: 'instagram'
-  = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
-  = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
+    = link_to 'Facebook', "#", class: 'facebook'
+    = link_to 'Instagram', '#', class: 'instagram'
+    = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.original_url}", target: '_blank', class: 'twitter'
+    = link_to 'VK', "http://vk.com/share.php?url=#{request.original_url}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
 
-.dialog.instagram_container.hide.align-center
-  %h3 Сохрани эту фотографию для инстаграма:
-  .instagram_map
+  .dialog.instagram_container.hide.align-center
+    %h3 Сохрани эту фотографию для инстаграма:
+    .instagram_map
 
-.overlay.hide
-#map-canvas
+  .overlay.hide
+  #map-canvas

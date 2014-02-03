@@ -65,13 +65,10 @@ $ ->
       map.setCenter new google.maps.LatLng(y, x)
 
     google.maps.event.addListener map, "zoom_changed", ->
-      console.log map.zoom
       if map.zoom >= 4
-        console.log 'show'
         for mk in markers
           mk.labelVisible = true
       else
-        console.log 'hide'
         for mk in markers
           mk.labelVisible = false
 
@@ -123,11 +120,11 @@ $ ->
     { featureType: 'administrative.land_parcel', elementType: "geometry", stylers: [ { visibility: "off" } ] },
   ]
 
-  if $('#map-canvas').length > 0
-    #google.maps.event.addDomListener window, "load", initialize
-    initializeUserMap()
-    for city in gon.cities
-      show_city_in_maps(city.name, city.latitude, city.longitude)
+  Pace.on 'done', ->
+    if $('#map-canvas').length > 0
+      initializeUserMap()
+      for city in gon.cities
+        show_city_in_maps(city.name, city.latitude, city.longitude)
 
   $('.invite_final').click ->
     $('.text_container').show()

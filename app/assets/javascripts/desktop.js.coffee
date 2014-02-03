@@ -70,26 +70,27 @@ $ ->
     )
     marker.setAnimation(google.maps.Animation.DROP)
 
-  $('.main').onepage_scroll
-    sectionContainer: 'section'
-    easing: 'ease'
-    animationTime: 1000
-    afterMove: (index) ->
-      if (index == 3 or index == 4) and not been_there
-        city_counter = 0
-        add_city = ->
-          if city_counter < cities.length
-            show_city_in_maps(cities[city_counter].name, cities[city_counter].latitude, cities[city_counter].longitude, map)
-            city_counter++
-          else
-            clearInterval city_timer
-        city_timer = setInterval(add_city, 300)
-        been_there = true
+  Pace.on 'done', ->
+    $('.main').fadeIn()
+    $('.main').onepage_scroll
+      sectionContainer: 'section'
+      easing: 'ease'
+      animationTime: 1000
+      afterMove: (index) ->
+        if (index == 3 or index == 4) and not been_there
+          city_counter = 0
+          add_city = ->
+            if city_counter < cities.length
+              show_city_in_maps(cities[city_counter].name, cities[city_counter].latitude, cities[city_counter].longitude, map)
+              city_counter++
+            else
+              clearInterval city_timer
+          city_timer = setInterval(add_city, 300)
+          been_there = true
 
 
-  if $('#map-canvas-main').length > 0
-    #google.maps.event.addDomListener window, "load", initialize
-    initializeMainMap()
+    if $('#map-canvas-main').length > 0
+      initializeMainMap()
 
   $('.md1, .md2, .md3').click ->
     $(".main").moveDown()
