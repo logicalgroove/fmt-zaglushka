@@ -30,6 +30,7 @@ $ ->
     mapOptions =
       zoom: 3
       minZoom: 2
+      maxZoom: 11
       center: new google.maps.LatLng(36, -10)
       scrollwheel: true
       navigationControl: false
