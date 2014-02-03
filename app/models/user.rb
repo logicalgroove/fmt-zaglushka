@@ -23,9 +23,7 @@ class User
   end
 
   def world_map_name
-    user_map = "world_map_#{id.to_s}.jpg"
-    default_map = 'world_map.jpg'
-    return File.file?("public/maps/#{user_map}") ? "maps/#{user_map}" : default_map
+    "maps/world_map_#{id.to_s}.jpg"
   end
 
   def create_image_world_map
