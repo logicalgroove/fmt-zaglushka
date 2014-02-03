@@ -145,12 +145,15 @@ $ ->
 
     $('.share_container').hide()
 
-  $('.overlay').click ->
-    $(this).hide()
+  $('.instagram_container').click (e) ->
+    $('.overlay').hide()
     $('.instagram_container').hide()
     $('.logo-small').show()
     $('.counters').show()
     $('#city_name_auto').show()
     $('.finish_my_map').show()
+
+  $('.instagram_container').on 'click', 'img', (e) ->
+    e.stopPropagation()
 
 root = exports ? this
