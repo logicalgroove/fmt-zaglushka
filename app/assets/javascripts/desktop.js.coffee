@@ -5,7 +5,6 @@ $ ->
 
   $('.icon.down').center('left')
   $(window).resize ->
-    $('.dialog').center()
     $('.icon.down').center('left')
 
   cities = [

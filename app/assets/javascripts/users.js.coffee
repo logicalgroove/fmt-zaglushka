@@ -3,8 +3,6 @@ $ ->
   map = undefined
   markers = []
 
-  $('.dialog').center()
-
   root.initializeUserMap = ->
     options =
       types: ["(cities)"]
@@ -133,7 +131,7 @@ $ ->
   $('.finish_my_map').click ->
     $(this).hide()
     $('#city_name_auto').hide()
-    $('.share_container').center().show('drop', {direction: 'up'})
+    $('.share_container').show('drop', {direction: 'up'})
 
   $('.instagram').click ->
     $('.overlay').show()
@@ -142,10 +140,10 @@ $ ->
 
     img = $("<img />").attr("src", "/maps/instagram_map_#{gon.user_id}.jpg").load(->
       $('.instagram_map').html img
-      $('.instagram_container').center().show('drop', {direction: 'up'})
+      $('.instagram_container').show('drop', {direction: 'up'})
     )
 
-    $('.share_container').center().hide()
+    $('.share_container').hide()
 
   $('.overlay').click ->
     $(this).hide()
