@@ -1,6 +1,7 @@
 $ ->
   geocoder = undefined
   map = undefined
+  markers = []
 
   $('.dialog').center()
 
@@ -45,59 +46,66 @@ $ ->
     map.setOptions styles: styles
 
     strictBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-85, -180),
-      new google.maps.LatLng(85, 180)
+      new google.maps.LatLng(-70, -180),
+      new google.maps.LatLng(70, 180)
     )
 
     google.maps.event.addListener map, "bounds_changed", ->
-      console.log 'moved'
-      mapBounds = map.getBounds()
-      map_SW_lat = mapBounds.getSouthWest().lat()
-      map_SW_lng = mapBounds.getSouthWest().lng()
-      map_NE_lat = mapBounds.getNorthEast().lat()
-      map_NE_lng = mapBounds.getNorthEast().lng()
+      c = map.getCenter()
+      x = c.lng()
+      y = c.lat()
       maxX = strictBounds.getNorthEast().lng()
       maxY = strictBounds.getNorthEast().lat()
       minX = strictBounds.getSouthWest().lng()
       minY = strictBounds.getSouthWest().lat()
-      return  if strictBounds.contains(mapBounds.getNorthEast()) and strictBounds.contains(mapBounds.getSouthWest())
+      x = minX  if x < minX
+      x = maxX  if x > maxX
+      y = minY  if y < minY
+      y = maxY  if y > maxY
+      map.setCenter new google.maps.LatLng(y, x)
 
-      # We're out of bounds - Move the map back within the bounds
-      map_SW_lng = minX  if map_SW_lng < minX
-      map_SW_lng = maxX  if map_SW_lng > maxX
-      map_NE_lng = minX  if map_NE_lng < minX
-      map_NE_lng = maxX  if map_NE_lng > maxX
-      map_SW_lat = minY  if map_SW_lat < minY
-      map_SW_lat = maxY  if map_SW_lat > maxY
-      map_NE_lat = minY  if map_NE_lat < minY
-      map_NE_lat = maxY  if map_NE_lat > maxY
-      map.panToBounds new google.maps.LatLngBounds(new google.maps.LatLng(map_SW_lat, map_SW_lng), new google.maps.LatLng(map_NE_lat, map_NE_lng))
+    google.maps.event.addListener map, "zoom_changed", ->
+      console.log map.zoom
+      if map.zoom >= 4
+        console.log 'show'
+        for mk in markers
+          mk.labelVisible = true
+      else
+        console.log 'hide'
+        for mk in markers
+          mk.labelVisible = false
 
   root.show_city_in_maps = (address, latitude, longitude, zoom) ->
     zoom = (if typeof zoom isnt "undefined" then zoom else false)
 
     pinImage = new google.maps.MarkerImage("/assets/pin.png", new google.maps.Size(21, 34), new google.maps.Point(0,0), new google.maps.Point(10, 34))
 
-    marker = new google.maps.Marker(
+    marker = new MarkerWithLabel(
       map: map
       icon: pinImage
       position: new google.maps.LatLng(latitude, longitude)
-      labelContent : 'test'
-      labelAnchor: new google.maps.LatLng(latitude, longitude)
+      labelAnchor: new google.maps.Point(40, 0)
+      labelContent: address.split(',')[0]
       labelClass: "labels"
+      labelVisible: false
     )
+    markers.push(marker)
     marker.setAnimation(google.maps.Animation.DROP)
     iw = new google.maps.InfoWindow({content: address})
 
     google.maps.event.addListener marker, "mouseover", ->
-      iw.open map, marker
+      #iw.open map, marker
       $(".gm-style-iw").next("div").remove()
+      $(marker.label.labelDiv_).show()
 
     google.maps.event.addListener marker, "mouseout", ->
-      iw.close()
+      #iw.close()
+      if map.zoom <= 3
+        $(marker.label.labelDiv_).hide()
 
     if zoom
       map.panTo(marker.getPosition())
+      map.setZoom(3)
 
   styles = [
     { featureType: "water", stylers: [ { color: '#309eb5' }, { visibility: "simplified" } ] },
