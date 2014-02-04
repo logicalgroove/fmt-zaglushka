@@ -1,13 +1,4 @@
 $ ->
-  calculate_font_size = ->
-    emz = $(window).width() / 144
-    $('body').css('font-size', "#{emz}px")
-
-  calculate_font_size()
-
-  $(window).resize ->
-    calculate_font_size()
-
   $('.invite_final').click ->
     $(this).hide()
     $('.email_form').show()
