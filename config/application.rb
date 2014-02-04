@@ -57,6 +57,8 @@ module Zaglushka
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
 
+    # Custom error pages
+    config.exceptions_app = self.routes
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.paths << Rails.root.join('fonts')
