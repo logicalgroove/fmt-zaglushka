@@ -22,6 +22,7 @@ gem 'capistrano', '~> 3.1'
 gem 'capistrano-rails', '~> 1.1'
 gem 'capistrano-bundler'
 gem 'capistrano-rvm'
+gem 'russian', '~> 0.6.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

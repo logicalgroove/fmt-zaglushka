@@ -77,7 +77,7 @@ class User
       c.gravity 'Southwest'
       c.font "app/assets/fonts/pfhandbookpro-thin-webfont.ttf"
       c.pointsize '53'
-      c.draw "text 40,22 'городов'"
+      c.draw "text 40,22 '#{Russian::p(city_count.to_i, 'город', 'города', 'городов')}'"
       c.fill("#fff")
     end
 
@@ -93,7 +93,7 @@ class User
       c.gravity 'Southwest'
       c.font "app/assets/fonts/pfhandbookpro-thin-webfont.ttf"
       c.pointsize '53'
-      c.draw "text 240,22 'стран'"
+      c.draw "text 240,22 '#{Russian::p(countries_count.to_i, 'страна', 'страны', 'стран')}'"
       c.fill("#fff")
     end
 

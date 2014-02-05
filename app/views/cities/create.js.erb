@@ -1,3 +1,6 @@
+$('#cities_count').parent().find('.label').html("<%= Russian::p(user.city_count.to_i, 'ГОРОД', 'ГОРОДА', 'ГОРОДОВ')%>")
+$('#countries_count').parent().find('.label').html("<%= Russian::p(user.countries_count.to_i, 'СТРАНА', 'СТРАНЫ', 'СТРАН') %>")
+
 $('#city_name_auto').blur();
 setTimeout(function(){
   $('#city_name_auto').val('');
