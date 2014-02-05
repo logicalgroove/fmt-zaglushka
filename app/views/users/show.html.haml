@@ -30,12 +30,12 @@
 
       .counters{class: ('hide' unless user.cities?)}
         .counter
-          .label ГОРОДОВ
           #cities_count.number= user.city_count
+          .label= Russian::p(user.city_count.to_i, 'ГОРОД', 'ГОРОДА', 'ГОРОДОВ')
 
         .counter
-          .label СТРАН
           #countries_count.number= user.countries_count
+          .label= Russian::p(user.countries_count.to_i, 'СТРАНА', 'СТРАНЫ', 'СТРАН')
 
   - if is_logged_in
     = link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
