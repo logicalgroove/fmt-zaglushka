@@ -11,8 +11,9 @@
 .main
   .over_map
     .header
-      .logo-small
-        = link_to image_tag('fmt-logo-small.png'), root_path
+      - unless mobile?
+        .logo-small
+          = link_to image_tag('fmt-logo-small.png'), root_path
       %p#notice= notice
 
       - if is_logged_in

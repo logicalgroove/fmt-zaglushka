@@ -1,4 +1,5 @@
 $ ->
+  $('.page_1, .page_2, .page_3, .page_4').css('min-height', $(window).height() + 80)
   Pace.on 'done', ->
     $('.main').fadeIn()
 
@@ -8,3 +9,6 @@ $ ->
     , "slow"
     $('.email_form').show()
     $('.invite_final').hide()
+
+  $('.make_your_map').click ->
+    $('.header').hide()
