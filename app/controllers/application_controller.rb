@@ -28,7 +28,6 @@ class ApplicationController < ActionController::Base
 
   def mobile?
     !!(request.user_agent =~ /Mobile|webOS/)
-    #true
   end
 
   def is_logged_in

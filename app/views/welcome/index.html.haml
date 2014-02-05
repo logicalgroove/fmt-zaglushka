@@ -13,7 +13,7 @@
   %section.page_2
     .logo-small
       = image_tag 'fmt-logo-small.png'
-    = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me'
+    = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me top' unless mobile?
     .container
       %h1.align-center Найди
       %h2.align-center Самые интересные места по мнению твоих друзей
@@ -31,7 +31,7 @@
   %section.page_3
     .logo-small
       = image_tag 'fmt-logo-small.png'
-    = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me'
+    = link_to 'Запросить инвайт', '#', :class => 'btn btn-small animated lightSpeedIn invite_me top' unless mobile?
     .container
       %p.align-center
         %span.icon.talk
@@ -59,9 +59,10 @@
           = link_to 'Запросить инвайт', '#', :class => 'btn btn-large invite_final'
         .users.email_form
           = render 'users/form'
-      .social_links
-        = link_to 'Facebook', 'https://www.facebook.com/followmytravel', class: 'icon facebook', target: '_blank'
-        = link_to 'Instagram', 'http://instagram.com/fmytravel', class: 'icon instagram', target: '_blank'
-        = mail_to 'hello@followmytravel.com', nil, class: 'icon email', title: 'hello@followmytravel.com'
+      - unless mobile?
+        .social_links
+          = link_to 'Facebook', 'https://www.facebook.com/followmytravel', class: 'icon facebook', target: '_blank'
+          = link_to 'Instagram', 'http://instagram.com/fmytravel', class: 'icon instagram', target: '_blank'
+          = mail_to 'hello@followmytravel.com', nil, class: 'icon email', title: 'hello@followmytravel.com'
 
     #map-canvas-main
