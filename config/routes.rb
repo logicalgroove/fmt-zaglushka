@@ -8,10 +8,6 @@ Zaglushka::Application.routes.draw do
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
   end
-  match '/404' => 'errors#not_found'
-  match '/422' => 'errors#server_error'
-  match '/500' => 'errors#server_error'
-
   if Rails.env.development?
     mount UserMailer::Preview => 'preview_email'
   end
