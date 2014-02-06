@@ -58,7 +58,8 @@ module Zaglushka
     # config.active_record.whitelist_attributes = true
 
     # Custom error pages
-    config.exceptions_app = ->(env) { ExceptionsController.action(:show).call(env) }
+    #config.exceptions_app = ->(env) { ExceptionsController.action(:show).call(env) }
+    config.exceptions_app = self.routes
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.paths << Rails.root.join('fonts')
