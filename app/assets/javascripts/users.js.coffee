@@ -44,12 +44,18 @@ $ ->
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
     map.setOptions styles: styles
 
-    strictBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-70, -180),
-      new google.maps.LatLng(70, 180)
-    )
-
     google.maps.event.addListener map, "bounds_changed", ->
+      if map.zoom == 2
+        strictBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(-30, -180),
+          new google.maps.LatLng(30, 180)
+        )
+      else
+        strictBounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(-70, -180),
+          new google.maps.LatLng(70, 180)
+        )
+
       c = map.getCenter()
       x = c.lng()
       y = c.lat()
@@ -92,7 +98,7 @@ $ ->
     google.maps.event.addListener marker, "mouseover", ->
       #iw.open map, marker
       $(".gm-style-iw").next("div").remove()
-      $(marker.label.labelDiv_).show()
+      $(marker.label.labelDiv_).fadeIn()
 
     google.maps.event.addListener marker, "mouseout", ->
       #iw.close()
