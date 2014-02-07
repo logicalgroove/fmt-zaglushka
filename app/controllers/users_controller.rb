@@ -2,14 +2,19 @@ class UsersController < ApplicationController
   expose(:user)
   expose(:users)
   expose(:short)
+  expose(:city) {City.where(:id => params['city_id']).first}
+
+  before_filter :restrict_to_owner, :only => [:delete_city]
 
   def show
     gon.cities = []
     gon.cities_count = user.city_count
     gon.map_image = user.world_map_name
     gon.user_id = user.id.to_s
+    gon.cities = {}
+    gon.is_logged_in = is_logged_in
     user.cities.each do |city|
-      gon.cities.push({name: "#{city.name}, #{city.country.name}", latitude: city.latitude, longitude: city.longitude})
+      gon.cities[city.id] = {name: "#{city.name}, #{city.country.name}", latitude: city.latitude, longitude: city.longitude, user_percentage: "#{city.user_percentage}" }
     end
   end
 
@@ -38,5 +43,18 @@ class UsersController < ApplicationController
         format.json { render json: user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def delete_city
+    respond_to do |format|
+      user.delete_city(city)
+      format.js
+    end
+  end
+
+  private
+
+  def restrict_to_owner
+    raise ActionController::RoutingError.new('Not Found') if !is_logged_in
   end
 end

@@ -14,6 +14,11 @@ class User
     self.save
   end
 
+  def delete_city(city)
+    cities.delete(city)
+    city.delete(self)
+  end
+
   def city_count
     city_ids.count.to_s
   end

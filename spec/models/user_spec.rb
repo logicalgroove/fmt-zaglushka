@@ -57,4 +57,19 @@ describe User do
     end
   end
 
+  describe "when user delete city" do
+    let(:country) { FactoryGirl.create(:country) }
+    let(:city) { FactoryGirl.create(:city, country: country) }
+    it "should contain the right amount of cities and countries" do
+      some_city  = FactoryGirl.create(:city, country: country, name: 'Barcelona')
+      some_country = FactoryGirl.create(:country, name: 'Cuba')
+      some_other_city = FactoryGirl.create(:city, country: some_country, name: 'Matanzas')
+      user.cities << city
+      user.cities << some_city
+      user.cities << some_other_city
+      user.save
+      user.delete_city(some_city)
+      user.cities.count.should == 2
+    end
+  end
 end
