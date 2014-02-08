@@ -48,3 +48,7 @@ group :test do
   gem 'capybara-screenshot'
   gem 'capybara-webkit'
 end
+
+group :development do
+  gem 'rollbar'
+end
