@@ -50,5 +50,5 @@ group :test do
 end
 
 group :development do
-  gem 'rollbar'
+  gem 'newrelic_rpm'
 end
