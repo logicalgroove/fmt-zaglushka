@@ -3,13 +3,15 @@
 
   %table.table.table-striped
     %tr
-      %th email
-      %th created at
-      %th countries
-      %th cities
+      %th Email
+      %th Платформа
+      %th Создан
+      %th Стран
+      %th Городов
     - for user in User
       %tr
         %td= link_to user.email, user
+        %td= user.mobile? ? "Mobile" : "Desktop"
         %td= user.created_at
-        %td= user.countries.map(&:name).join(', ')
-        %td= user.cities.map(&:name).join(', ')
+        %td= user.countries_count
+        %td= user.city_count

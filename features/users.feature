@@ -158,8 +158,7 @@ Feature: User enter email
     | name | Odessa    |
     When I visit admin page
     Then I should see "zombie@brain.com"
-    And I should see "Barcelona"
-    And I should see "Odessa"
+    And I should see "1"
 
   @javascript
   Scenario: User should see a popup window when he click a city marker

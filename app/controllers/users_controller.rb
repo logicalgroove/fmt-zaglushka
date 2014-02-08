@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def create
     respond_to do |format|
       user.short_id = Digest::SHA1.hexdigest([Time.now, user.email].join)[0..4]
+      user.mobile = mobile?
       if user.save
         user.create_image_world_map
         UserMailer.registration_confirmation(user).deliver
