@@ -160,3 +160,16 @@ Feature: User enter email
     Then I should see "zombie@brain.com"
     And I should see "Barcelona"
     And I should see "Odessa"
+
+  @javascript
+  Scenario: User should see a popup window when he click a city marker
+    Given I exist as a user
+    When I visit my user page
+    And I wait for 8 seconds
+    And I search google maps for "Barcelona, Spain"
+    And I wait for ajax request to finish
+    And I refresh the page
+    And I wait for 5 seconds
+    And I click city marker
+    Then I should see "icon-trash.png" image
+    And I should see "Этот город"

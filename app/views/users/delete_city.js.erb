@@ -1,0 +1,18 @@
+jQuery.each(gon.markers, function(i, val){
+  if (val.id == "marker_<%= city.id %>") {
+    gon.markers[i].setMap(null)
+  }
+});
+
+gon.cities_count = <%= user.city_count %>
+
+$('#cities_count').html('<%= user.city_count %>').effect('bounce', {times:3}, 600)
+$('#countries_count').html('<%= user.countries_count %>').effect('bounce', {times:3}, 600)
+
+$('#cities_count').parent().find('.label').html("<%= Russian::p(user.city_count.to_i, 'ГОРОД', 'ГОРОДА', 'ГОРОДОВ')%>")
+$('#countries_count').parent().find('.label').html("<%= Russian::p(user.countries_count.to_i, 'СТРАНА', 'СТРАНЫ', 'СТРАН') %>")
+
+
+// Update share info
+$('.share_container a.twitter').attr('href', "https://twitter.com/intent/tweet?&text=<%= user.share_text %> <%= request.protocol %><%= request.host_with_port %>/s/<%= user.short_id %>")
+$('.share_container a.vk').attr('href', "http://vk.com/share.php?url=<%= request.protocol %><%= request.host_with_port %>/s/<%= user.short_id %>&title=Follow My Travel&description=<%= user.share_text %>&image=<%= request.protocol %><%= request.host_with_port %>/<%= user.world_map_name %>")

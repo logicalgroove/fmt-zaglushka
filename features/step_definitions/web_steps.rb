@@ -60,6 +60,10 @@ Then /^I should see a successful "([^"]*)" update message$/ do |model_name|
   page.should have_content "#{model_name} was successfully updated."
 end
 
+Then /^I should see "(.*?)" image$/ do |img|
+  page.should have_xpath("//img[@src=\"/assets/#{img}\"]")
+end
+
 Then /^I should see a failed "(.*?)" update message$/ do |model_name|
   page.should have_content "prohibited this #{model_name} from being updated"
 end
@@ -88,6 +92,10 @@ When /^I click "(.*?)" within "(.*?)"$/ do |link, element|
   within element do
     click_link link
   end
+end
+
+When /^I click city marker$/ do
+  find('.gmnoprint').click
 end
 
 When /^(?:|I )(?:choose|select) "([^"]*)" (?:for|from) "([^"]*)" within "(.*?)"$/ do |value, field, element|

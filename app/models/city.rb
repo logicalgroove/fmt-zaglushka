@@ -38,4 +38,8 @@ class City
     miller_location = google_projection.transform(miller_projection, google_location)
   end
 
+  def user_percentage
+    (users.count.to_f / 100 * User.count).round
+  end
+
 end
