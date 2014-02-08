@@ -1,6 +1,7 @@
-%h3"USERS"
-.container-fluid.table-responsive
-  %table.table-scroll
+.container
+  %h1.page-header Пользователи
+
+  %table.table.table-striped
     %tr
       %th email
       %th created at
@@ -10,7 +11,5 @@
       %tr
         %td= link_to user.email, user
         %td= user.created_at
-        %td= user.countries.map(&:name).join(',')
-        %td= user.cities.map(&:name).join(',')
-
-
+        %td= user.countries.map(&:name).join(', ')
+        %td= user.cities.map(&:name).join(', ')
