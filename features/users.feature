@@ -172,3 +172,19 @@ Feature: User enter email
     And I click city marker
     Then I should see "icon-trash.png" image
     And I should see "Этот город"
+
+  @javascript
+  Scenario: Admin should see total number of users
+    Given there is a user with "zombie@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    And there is a user with "add@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    When I visit admin page
+    Then I should see "2"
+

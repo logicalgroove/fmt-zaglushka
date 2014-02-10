@@ -1,5 +1,7 @@
 .container
-  %h1.page-header Пользователи
+  %h1.page-header
+    Пользователи
+    %span.counter.label.label-success= User.count
 
   %table.table.table-striped
     %tr
