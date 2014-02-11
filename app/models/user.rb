@@ -4,6 +4,8 @@ class User
   before_validation :downcase_email
   field :email, type: String
   field :short_id, type: String
+  field :mobile, type: Boolean
+  field :shared_to, type: String
   validates :email, :presence => true, :format => {:with =>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, :uniqueness => true
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :countries

@@ -1,21 +1,31 @@
 <div id="fb-root"></div>
 <script>
   $(document).ready(function() {
+    console.log('HELLO?');
+    var submit_fb = ''
     $.ajaxSetup({ cache: true });
     $.getScript('//connect.facebook.net/ru_RU/all.js', function(){
       FB.init({
         appId: '<%= Settings.facebook_id %>',
       });
 
-      $('.facebook').click(function(){
+      submit_fb = function() {
+        console.log('FB!!');
         FB.ui({
           method: 'feed',
           link: '<%= request.original_url %>',
           description: 'У меня '+ gon.cities_count +'. А у тебя?',
           picture: '<%= "#{request.protocol}#{request.host_with_port}/" %>' + gon.map_image
         }, function(response){});
-        false
-      })
+      }
+    });
+    $('.facebook').click(function(){
+      $.get("/users/<%= user.id %>/shared_to?service=facebook", function(data) {
+        <% unless Rails.env == 'test' %>
+          submit_fb();
+        <% end %>
+      });
+      false
     });
   });
 

@@ -6,7 +6,7 @@
   %meta{content: user.share_text , property: "og:description"}/
 
 - content_for :body do
-  = render 'shared/fb' unless Rails.env.test?
+  = render 'shared/fb'
 
 .main
   .over_map
@@ -51,10 +51,10 @@
     %h2 Поделись своей картой с миром!
     %p Проверь почту — ссылка на карту уже там!
 
-    = link_to 'Facebook', "#", class: 'facebook'
-    = link_to 'Instagram', '#', class: 'instagram'
-    = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.protocol}#{request.host_with_port}/s/#{user.short_id}", target: '_blank', class: 'twitter'
-    = link_to 'VK', "http://vk.com/share.php?url=#{request.protocol}#{request.host_with_port}/s/#{user.short_id}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank'
+    = link_to 'Facebook', "#", class: 'facebook', id: 'share_to-facebook'
+    = link_to 'Instagram', '#', class: 'instagram', id: 'instagram'
+    = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.protocol}#{request.host_with_port}/s/#{user.short_id}", target: '_blank', class: 'twitter', id: 'twitter'
+    = link_to 'VK', "http://vk.com/share.php?url=#{request.protocol}#{request.host_with_port}/s/#{user.short_id}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank', id: 'vk'
 
   .dialog.instagram_container.hide
     %h3 Сохрани эту фотографию для Instagram:

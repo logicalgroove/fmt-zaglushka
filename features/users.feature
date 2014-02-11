@@ -158,5 +158,31 @@ Feature: User enter email
     | name | Odessa    |
     When I visit admin page
     Then I should see "zombie@brain.com"
-    And I should see "Barcelona"
-    And I should see "Odessa"
+    And I should see "1"
+
+  @javascript
+  Scenario: User should see a popup window when he click a city marker
+    Given I exist as a user
+    When I visit my user page
+    And I wait for 8 seconds
+    And I search google maps for "Barcelona, Spain"
+    And I wait for ajax request to finish
+    And I refresh the page
+    And I wait for 5 seconds
+    And I click city marker
+    Then I should see "icon-trash.png" image
+    And I should see "Этот город"
+
+  @javascript
+  Scenario: System saves sharing information if user click share
+    Given I exist as a user
+    When I visit my user page
+    And I search google maps for "Barcelona, Spain"
+    And I wait for ajax request to finish
+    And I refresh the page
+    And I wait for 8 seconds
+    And I click "Моя карта готова"
+    And I click "share_to-facebook"
+    And I wait for 8 seconds
+    And take a screenshot
+    Then I should have "facebook" as shared option

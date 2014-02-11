@@ -39,4 +39,23 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def delete_city
+    respond_to do |format|
+      user.delete_city(city)
+      format.js
+    end
+  end
+
+  def shared_to
+    render nothing: true
+    user.update_attributes(:shared_to => params['service'])
+    ap params['service']
+  end
+
+  private
+
+  def restrict_to_owner
+    raise ActionController::RoutingError.new('Not Found') if !is_logged_in
+  end
 end

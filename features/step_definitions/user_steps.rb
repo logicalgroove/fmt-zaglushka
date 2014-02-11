@@ -48,3 +48,7 @@ When /^I visit "(.*?)" page$/  do |email|
   user = User.where(email: email).last
   visit user_path(user)
 end
+
+Then /^I should have "(.*?)" as shared option$/ do |network|
+  @user.shared_to.should == network
+end
