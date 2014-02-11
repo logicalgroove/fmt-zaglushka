@@ -39,7 +39,7 @@ class City
   end
 
   def user_percentage
-    (users.count.to_f / 100 * User.count).round
+    (users.count.to_f / User.count * 100).round
   end
 
 end
