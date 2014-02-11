@@ -39,8 +39,8 @@ describe User do
       user.create_image_world_map
       user.cities << city
       user.add_city_to_image_world_map(city)
-      File.exist?("public/maps/world_map_#{user.id.to_s}.jpg").should be_true 
-      File.exist?("public/maps/instagram_map_#{user.id.to_s}.jpg").should be_true 
+      File.exist?("public/maps/world_map_#{user.id.to_s}.jpg").should be_true
+      File.exist?("public/maps/instagram_map_#{user.id.to_s}.jpg").should be_true
       File.delete("public/maps/world_map_#{user.id.to_s}.jpg")
       File.delete("public/maps/instagram_map_#{user.id.to_s}.jpg")
     end
@@ -51,6 +51,8 @@ describe User do
       user.cities << city
       user.cities << some_city
       user.cities << some_other_city
+      user.countries << country
+      user.countries << some_country
       user.save
       user.cities.count.should == 3
       user.countries_count.to_i.should == 2
@@ -60,7 +62,7 @@ describe User do
   describe "when user delete city" do
     let(:country) { FactoryGirl.create(:country) }
     let(:city) { FactoryGirl.create(:city, country: country) }
-    it "should contain the right amount of cities and countries" do
+    it "should contain the right amount of cities and countries after delete" do
       some_city  = FactoryGirl.create(:city, country: country, name: 'Barcelona')
       some_country = FactoryGirl.create(:country, name: 'Cuba')
       some_other_city = FactoryGirl.create(:city, country: some_country, name: 'Matanzas')

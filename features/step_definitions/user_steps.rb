@@ -48,3 +48,12 @@ When /^I visit "(.*?)" page$/  do |email|
   user = User.where(email: email).last
   visit user_path(user)
 end
+
+Given /^this user has the "(.*?)" field set to "(.*?)"$/  do |field, value|
+  user = @user
+  user.update_attributes(field => value)
+end
+
+Then /^I should see "(.*?)" after "(.*?)" on the page$/  do |arg1, arg2|
+  page.body.should =~ /#{arg1}.*#{arg2}/m
+end
