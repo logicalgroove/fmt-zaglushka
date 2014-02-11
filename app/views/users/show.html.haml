@@ -52,9 +52,9 @@
     %p Проверь почту — ссылка на карту уже там!
 
     = link_to 'Facebook', "#", class: 'facebook', id: 'share_to-facebook'
-    = link_to 'Instagram', '#', class: 'instagram', id: 'instagram'
-    = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.protocol}#{request.host_with_port}/s/#{user.short_id}", target: '_blank', class: 'twitter', id: 'twitter'
-    = link_to 'VK', "http://vk.com/share.php?url=#{request.protocol}#{request.host_with_port}/s/#{user.short_id}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank', id: 'vk'
+    = link_to 'Instagram', '#', class: 'instagram', id: 'share_to-instagram'
+    = link_to 'Twitter', "https://twitter.com/intent/tweet?&text=#{user.share_text} #{request.protocol}#{request.host_with_port}/s/#{user.short_id}", target: '_blank', class: 'twitter', id: 'share_to-twitter'
+    = link_to 'VK', "http://vk.com/share.php?url=#{request.protocol}#{request.host_with_port}/s/#{user.short_id}&title=Follow My Travel&description=#{user.share_text}&image=#{request.protocol}#{request.host_with_port}/#{user.world_map_name}", class: 'vk', target: '_blank', id: 'share_to-vk'
 
   .dialog.instagram_container.hide
     %h3 Сохрани эту фотографию для Instagram:

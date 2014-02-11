@@ -56,7 +56,6 @@ class UsersController < ApplicationController
   def shared_to
     render nothing: true
     user.update_attributes(:shared_to => params['service'])
-    ap params['service']
   end
 
   private

@@ -156,6 +156,7 @@ $ ->
     $('.logo-small').hide()
     $('.counters').hide()
 
+    $.get "/users/#{gon.user_id}/shared_to?service=instagram"
     img = $("<img />").attr("src", "/maps/instagram_map_#{gon.user_id}.jpg").load(->
       $('.instagram_map').html img
       $('.instagram_container').show('drop', {direction: 'up'})
@@ -173,5 +174,12 @@ $ ->
 
   $('.instagram_container').on 'click', 'img', (e) ->
     e.stopPropagation()
+
+  $('.twitter').click ->
+    $.get "/users/#{gon.user_id}/shared_to?service=twitter"
+
+  $('.vk').click ->
+    $.get "/users/#{gon.user_id}/shared_to?service=vk"
+
 
 root = exports ? this

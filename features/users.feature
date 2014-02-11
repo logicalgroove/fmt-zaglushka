@@ -174,20 +174,6 @@ Feature: User enter email
     And I should see "Этот город"
 
   @javascript
-  Scenario: System saves sharing information if user click share
-    Given I exist as a user
-    When I visit my user page
-    And I search google maps for "Barcelona, Spain"
-    And I wait for ajax request to finish
-    And I refresh the page
-    And I wait for 8 seconds
-    And I click "Моя карта готова"
-    And I click "share_to-facebook"
-    And I wait for 8 seconds
-    And take a screenshot
-    Then I should have "facebook" as shared option
-
-  @javascript
   Scenario: Admin should see total number of users
     Given there is a user with "zombie@brain.com" email
     And this user has the following cities in the database:

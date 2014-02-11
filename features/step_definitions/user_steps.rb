@@ -50,6 +50,7 @@ When /^I visit "(.*?)" page$/  do |email|
 end
 
 Then /^I should have "(.*?)" as shared option$/ do |network|
+  @user.reload
   @user.shared_to.should == network
 end
 
