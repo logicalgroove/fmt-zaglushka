@@ -5,15 +5,17 @@
 
   %table.table.table-striped
     %tr
-      %th= sortable "email", "Email"
-      %th= sortable "mobile", "Платформа"
-      %th= sortable "created_at", "Создан"
-      %th= sortable "country_ids", "Стран"
-      %th= sortable "city_ids", "Городов"
+      %th= sortable 'email', 'Email'
+      %th= sortable 'mobile', 'Платформа'
+      %th= sortable 'created_at', 'Создан'
+      %th= sortable 'shared_to', 'Shared to'
+      %th= sortable 'country_ids', 'Стран'
+      %th= sortable 'city_ids', 'Городов'
     - for user in users
       %tr
         %td= link_to user.email, user
-        %td= user.mobile? ? "Mobile" : "Desktop"
+        %td= user.mobile? ? 'Mobile' : 'Desktop'
         %td= user.created_at
+        %td= user.shared_to || '-'
         %td= user.countries_count
         %td= user.city_count

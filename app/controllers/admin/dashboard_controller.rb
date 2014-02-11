@@ -12,7 +12,7 @@ class Admin::DashboardController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   # constants
-  USER_SORT_COLUMNS = ['email', 'mobile', 'created_at', 'city_ids', 'country_ids']
+  USER_SORT_COLUMNS = ['email', 'mobile', 'created_at', 'shared_to', 'city_ids', 'country_ids']
 
   private
 
