@@ -1,7 +1,6 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  before_validation :downcase_email
   field :email, type: String
   field :short_id, type: String
   field :mobile, type: Boolean
@@ -10,10 +9,19 @@ class User
   has_and_belongs_to_many :cities
   has_and_belongs_to_many :countries
 
+  before_validation :downcase_email
+
+  validates :email, :presence => true, :format => {:with =>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, :uniqueness => true
+
 
   def add_city(city)
     self.cities << city
     self.save
+  end
+
+  def delete_city(city)
+    cities.delete(city)
+    city.delete(self)
   end
 
   def city_count
@@ -21,7 +29,7 @@ class User
   end
 
   def countries_count
-    cities.group_by(&:country_id).count.to_s
+    country_ids.count.to_s
   end
 
   def world_map_name

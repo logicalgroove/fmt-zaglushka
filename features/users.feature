@@ -186,3 +186,34 @@ Feature: User enter email
     And I wait for 8 seconds
     And take a screenshot
     Then I should have "facebook" as shared option
+
+  @javascript
+  Scenario: Admin should see total number of users
+    Given there is a user with "zombie@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    And there is a user with "add@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    When I visit admin page
+    Then I should see "2"
+
+  @javascript
+  Scenario: Admin should be able to sort users by countries_count field
+    Given there is a user with "zombie@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the "created_at" field set to "2014-02-10 12:25:15 UTC"
+    And there is a user with "add@brain.com" email
+    And this user has the following cities in the database:
+    | name | Barcelona |
+    And this user has the following cities in the database:
+    | name | Odessa    |
+    And this user has the "created_at" field set to "2013-02-10 12:25:15 UTC"
+    When I visit admin page
+    And I click "Стран"
+    Then I should see "add@brain.com" after "zombie@brain.com" on the page

@@ -1,7 +1,9 @@
 $ ->
   geocoder = undefined
   map = undefined
-  markers = []
+  if typeof gon isnt "undefined"
+    gon.markers = []
+    gon.iw = []
 
   root.initializeUserMap = ->
     options =
@@ -71,13 +73,13 @@ $ ->
 
     google.maps.event.addListener map, "zoom_changed", ->
       if map.zoom >= 4
-        for mk in markers
+        for mk in gon.markers
           mk.labelVisible = true
       else
-        for mk in markers
+        for mk in gon.markers
           mk.labelVisible = false
 
-  root.show_city_in_maps = (address, latitude, longitude, zoom) ->
+  root.show_city_in_maps = (id, address, latitude, longitude, zoom) ->
     zoom = (if typeof zoom isnt "undefined" then zoom else false)
 
     pinImage = new google.maps.MarkerImage("/assets/pin.png", new google.maps.Size(21, 34), new google.maps.Point(0,0), new google.maps.Point(10, 34))
@@ -86,24 +88,34 @@ $ ->
       map: map
       icon: pinImage
       position: new google.maps.LatLng(latitude, longitude)
-      labelAnchor: new google.maps.Point(40, 0)
+      labelAnchor: new google.maps.Point(50, 0)
       labelContent: address.split(',')[0]
       labelClass: "labels"
       labelVisible: false
     )
-    markers.push(marker)
+    marker.set("id", "marker_#{id}")
+    gon.markers.push(marker)
     marker.setAnimation(google.maps.Animation.DROP)
-    iw = new google.maps.InfoWindow({content: address})
+
+    if gon.is_logged_in
+      content = "<h1 class='iw_h1 left'>#{address}</h1><a href='/users/#{gon.user_id}/delete_city?city_id=#{id}' class='icon city-delete left' data-remote=true><img src='/assets/icon-trash.png' /></a><div class='clear'></div><p>Этот город посетили #{gon.cities[id].user_percentage}% наших пользователей!</p>"
+    else
+      content = "<h1 class='iw_h1 left'>#{address}</h1><div class='clear'></div><p>этот город посетили #{gon.cities[id].user_percentage}% наших пользователей!</p>"
+    iw = new google.maps.InfoWindow({content: content})
 
     google.maps.event.addListener marker, "mouseover", ->
       #iw.open map, marker
-      $(".gm-style-iw").next("div").remove()
       $(marker.label.labelDiv_).fadeIn()
 
     google.maps.event.addListener marker, "mouseout", ->
-      #iw.close()
       if map.zoom <= 3
         $(marker.label.labelDiv_).hide()
+
+    google.maps.event.addListener marker, "click", ->
+      gon.iw.push(iw)
+      for iwo in gon.iw
+        iwo.close()
+      iw.open map, marker
 
     if zoom
       map.panTo(marker.getPosition())
@@ -128,8 +140,8 @@ $ ->
   Pace.on 'done', ->
     if $('#map-canvas').length > 0
       initializeUserMap()
-      for city in gon.cities
-        show_city_in_maps(city.name, city.latitude, city.longitude)
+      for city_id, city of gon.cities
+        show_city_in_maps(city_id, city.name, city.latitude, city.longitude)
 
   $('.invite_final').click ->
     $('.text_container').show()

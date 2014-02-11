@@ -1,16 +1,19 @@
-%h3"USERS"
-.container-fluid.table-responsive
-  %table.table-scroll
+.container
+  %h1.page-header
+    Пользователи
+    %span.counter.label.label-success= User.count
+
+  %table.table.table-striped
     %tr
-      %th email
-      %th created at
-      %th countries
-      %th cities
-    - for user in User
+      %th= sortable "email", "Email"
+      %th= sortable "mobile", "Платформа"
+      %th= sortable "created_at", "Создан"
+      %th= sortable "country_ids", "Стран"
+      %th= sortable "city_ids", "Городов"
+    - for user in users
       %tr
         %td= link_to user.email, user
+        %td= user.mobile? ? "Mobile" : "Desktop"
         %td= user.created_at
-        %td= user.countries.map(&:name).join(',')
-        %td= user.cities.map(&:name).join(',')
-
-
+        %td= user.countries_count
+        %td= user.city_count
