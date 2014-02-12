@@ -148,6 +148,7 @@ $ ->
 
   $('.finish_my_map').click ->
     $(this).hide()
+    $('.overlay').show()
     $('#city_name_auto').hide()
     $('.share_container').show('drop', {direction: 'up'})
 
@@ -164,13 +165,16 @@ $ ->
 
     $('.share_container').hide()
 
-  $('.instagram_container').click (e) ->
+  show_main_ui = ->
     $('.overlay').hide()
-    $('.instagram_container').hide()
-    $('.logo-small').show()
-    $('.counters').show()
-    $('#city_name_auto').show()
-    $('.finish_my_map').show()
+    $('.logo-small, .counters, #city_name_auto, .finish_my_map').show()
+
+  $('.share_container, .instagram_container').click ->
+    $(this).hide()
+    show_main_ui()
+
+  $('.share_container').on 'click', 'a', (e) ->
+    e.stopPropagation()
 
   $('.instagram_container').on 'click', 'img', (e) ->
     e.stopPropagation()

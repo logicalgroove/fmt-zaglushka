@@ -24,6 +24,7 @@ gem 'capistrano-bundler'
 gem 'capistrano-rvm'
 gem 'russian', '~> 0.6.0'
 gem 'kaminari'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -48,8 +49,4 @@ group :test do
   #gem 'selenium-webdriver', '2.32.0'
   gem 'capybara-screenshot'
   gem 'capybara-webkit'
-end
-
-group :development do
-  gem 'newrelic_rpm'
 end
