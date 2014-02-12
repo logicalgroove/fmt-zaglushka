@@ -17,13 +17,13 @@ Feature: User shares map
 
   @javascript
   Scenario: System saves instagram sharing information if user click instagram
-    When I refresh the page
+    Given I visit page from mobile device
     And I click "Моя карта готова"
-    And take a screenshot
-    And I wait for 10 seconds
+    And I wait for 8 seconds
     And I click "share_to-instagram"
     And I wait for ajax request to finish
     Then I should have "instagram" as shared option
+    And I should see "Сохрани эту фотографию для Instagram:"
 
   @javascript
   Scenario: System saves twitter sharing information if user click twitter

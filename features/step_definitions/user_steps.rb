@@ -21,6 +21,13 @@ When /^I visit my user page$/ do
   visit user_path(@user)
 end
 
+Given /^I visit page from mobile device$/  do
+  agent = "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_1_2 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7D11 Safari/528.16"
+  page.driver.browser.header('User-Agent', agent)
+  visit user_path(@user)
+  mock_sessions
+end
+
 When /^I visit admin page$/ do
   encoded_login = ["admin:secret"].pack("m*")
   page.driver.header 'Authorization', "Basic #{encoded_login}"
