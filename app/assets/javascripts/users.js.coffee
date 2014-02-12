@@ -88,7 +88,7 @@ $ ->
       map: map
       icon: pinImage
       position: new google.maps.LatLng(latitude, longitude)
-      labelAnchor: new google.maps.Point(50, 0)
+      labelAnchor: new google.maps.Point(100, 0)
       labelContent: address.split(',')[0]
       labelClass: "labels"
       labelVisible: false
