@@ -19,7 +19,6 @@ Feature: User shares map
   Scenario: System saves instagram sharing information if user click instagram
     When I refresh the page
     And I click "Моя карта готова"
-    And take a screenshot
     And I wait for 10 seconds
     And I click "share_to-instagram"
     And I wait for ajax request to finish
