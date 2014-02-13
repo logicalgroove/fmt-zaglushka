@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   helper_method :mobile?
 
   private
-
   if Rails.env.test?
     prepend_before_filter :stub_current_user
 
