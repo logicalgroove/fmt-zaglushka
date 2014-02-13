@@ -98,7 +98,7 @@ $ ->
     marker.setAnimation(google.maps.Animation.DROP)
 
     if gon.is_logged_in
-      content = "<h1 class='iw_h1 left'>#{address}</h1><a href='/users/#{gon.user_id}/delete_city?city_id=#{id}' class='icon city-delete left' data-remote=true><img src='/assets/icon-trash.png' /></a><div class='clear'></div><p>Этот город посетили #{gon.cities[id].user_percentage}% наших пользователей!</p>"
+      content = "<h1 class='iw_h1 left'>#{address}</h1><a href='/users/#{gon.user_id}/delete_city?city_id=#{id}' id='delete_city-#{id}' class='icon city-delete left' data-remote=true><img src='/assets/icon-trash.png' /></a><div class='clear'></div><p>Этот город посетили #{gon.cities[id].user_percentage}% наших пользователей!</p>"
     else
       content = "<h1 class='iw_h1 left'>#{address}</h1><div class='clear'></div><p>этот город посетили #{gon.cities[id].user_percentage}% наших пользователей!</p>"
     iw = new google.maps.InfoWindow({content: content})

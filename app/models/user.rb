@@ -21,6 +21,20 @@ class User
   def delete_city(city)
     cities.delete(city)
     city.delete(self)
+    delete_city_country(city)
+  end
+
+  def delete_city_country(city)
+    if is_country_unique_for_user?(city.country)
+      countries.delete(city.country)
+      city.country.delete(self)
+    end
+  end
+
+  def is_country_unique_for_user?(country)
+    for city in cities do
+      return country != city.country
+    end
   end
 
   def city_count
