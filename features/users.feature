@@ -162,3 +162,4 @@ Feature: User enter email
     And I click city marker
     Then I should see "icon-trash.png" image
     And I should see "Этот город"
+
