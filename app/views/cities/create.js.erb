@@ -29,7 +29,7 @@ if (before_countries != "<%= user.countries_count %>") {
 
 if ($('#map_welcome').length > 0) {
   $('#map_welcome').hide('drop', {direction: 'down'}, function() {
-    $('#city_name_auto').appendTo('.header').addClass('outside').attr('placeholder', 'Добавить еще город?');
+    $('#city_name_auto').appendTo('.header').addClass('outside').attr('placeholder', 'Добавить еще город?').focus();
     $('#map_welcome').remove();
   });
 }

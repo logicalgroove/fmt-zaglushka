@@ -6,8 +6,9 @@ $ ->
   $('.invite_me').click ->
     $("html, body").animate
       scrollTop: $(document).height()
-    , "slow"
-    $('.email_form').show()
+    , "slow", ->
+      $('.email_form').show()
+      $('#user_email').focus()
     $('.invite_final').hide()
 
   $('.make_your_map').click ->
