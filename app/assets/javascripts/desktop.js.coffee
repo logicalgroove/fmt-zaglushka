@@ -96,6 +96,9 @@ $ ->
               clearInterval city_timer
           city_timer = setInterval(add_city, 300)
           been_there = true
+        if (index == 3 or index == 4)
+          if $('.email_form').is(':visible')
+            $('#user_email').focus()
 
 
     if $('#map-canvas-main').length > 0

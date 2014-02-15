@@ -108,6 +108,10 @@ When /^I click on the "([^"]*)" image$/ do |img_alt|
   find(:xpath, "//img[@alt = '#{img_alt}']/parent::a").click()
 end
 
+When /^I click "(.*?)" image$/ do |image_class|
+  find("#{image_class}").click
+end
+
 And "I refresh the page" do
   visit page.current_path
 end

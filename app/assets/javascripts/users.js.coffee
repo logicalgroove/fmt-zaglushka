@@ -142,6 +142,10 @@ $ ->
       initializeUserMap()
       for city_id, city of gon.cities
         show_city_in_maps(city_id, city.name, city.latitude, city.longitude)
+    if $("#city_name_auto").length > 0
+      setTimeout ->
+        $('#city_name_auto').focus()
+      , 100
 
   $('.invite_final').click ->
     $('.text_container').show()
@@ -168,6 +172,7 @@ $ ->
   show_main_ui = ->
     $('.overlay').hide()
     $('.logo-small, .counters, #city_name_auto, .finish_my_map').show()
+    $('#city_name_auto').focus()
 
   $('.share_container, .instagram_container').click ->
     $(this).hide()
