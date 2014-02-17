@@ -8,7 +8,7 @@ Zaglushka::Application.routes.draw do
     get :shared_to
   end
 
-  resources :cities
+  resources :cities, :only => [:create]
 
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
