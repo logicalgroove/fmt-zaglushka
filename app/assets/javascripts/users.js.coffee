@@ -12,6 +12,7 @@ $ ->
     if $("#city_name_auto").length > 0
       input = document.getElementById("city_name_auto")
       autocomplete = new google.maps.places.Autocomplete(input, options)
+      autocomplete.language = 'ru'
 
       google.maps.event.addListener autocomplete, 'place_changed', ->
         place = autocomplete.getPlace()
