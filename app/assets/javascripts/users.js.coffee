@@ -7,7 +7,7 @@ $ ->
 
   root.initializeUserMap = ->
     options =
-      types: ["(cities)"]
+      types: ["(regions)"]
 
     if $("#city_name_auto").length > 0
       input = document.getElementById("city_name_auto")
