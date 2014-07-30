@@ -62,16 +62,36 @@ describe User do
   describe "when user delete city" do
     let(:country) { FactoryGirl.create(:country) }
     let(:city) { FactoryGirl.create(:city, country: country) }
-    it "should contain the right amount of cities and countries after delete" do
-      some_city  = FactoryGirl.create(:city, country: country, name: 'Barcelona')
-      some_country = FactoryGirl.create(:country, name: 'Cuba')
-      some_other_city = FactoryGirl.create(:city, country: some_country, name: 'Matanzas')
-      user.cities << city
-      user.cities << some_city
-      user.cities << some_other_city
-      user.save
-      user.delete_city(some_city)
-      user.cities.count.should == 2
+
+    context 'with one country' do
+      it "should contain the right amount of cities and countries after delete" do
+        user.cities << city
+        user.countries << country
+        user.save
+        user.delete_city(city)
+        user.cities.count.should == 0
+        user.countries.count.should == 0
+      end
+    end
+
+    context 'with many countries' do
+      it "should contain the right amount of cities and countries after delete" do
+        some_city  = FactoryGirl.create(:city, country: country, name: 'Barcelona')
+        some_country = FactoryGirl.create(:country, name: 'Cuba')
+        some_other_city = FactoryGirl.create(:city, country: some_country, name: 'Matanzas')
+        some_other_city_same_country = FactoryGirl.create(:city, country: some_country, name: 'Varadero')
+        user.cities << city
+        user.cities << some_city
+        user.cities << some_other_city
+        user.cities << some_other_city_same_country
+        user.countries << country
+        user.countries << some_country
+        user.save
+        user.delete_city(some_other_city)
+        user.cities.count.should == 3
+        user.countries.count.should == 2
+      end
     end
   end
+
 end

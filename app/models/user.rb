@@ -26,16 +26,13 @@ class User
   end
 
   def delete_city_country(city)
-    if is_country_unique_for_user?(city.country)
+    if there_are_no_cities_with_this_country_for_user?(city.country)
       self.countries.delete(city.country)
-      self.save
     end
   end
 
-  def is_country_unique_for_user?(country)
-    for city in cities do
-      return country != city.country
-    end
+  def there_are_no_cities_with_this_country_for_user?(country)
+    return cities.map(&:country).map(&:id).grep(country.id).size < 1
   end
 
   def city_count
