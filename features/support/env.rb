@@ -12,7 +12,6 @@ require 'capybara-screenshot/cucumber'
 # selectors in your step definitions to use the XPath syntax.
 Capybara.default_selector = :css
 Capybara.save_and_open_page_path = "public/screenshots/"
-Capybara::Screenshot.append_timestamp = false
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 

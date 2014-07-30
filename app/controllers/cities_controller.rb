@@ -10,8 +10,8 @@ class CitiesController < ApplicationController
   def create
     respond_to do |format|
       country = Country.find_or_initialize_by(name: params[:city][:country])
-      country.cities << city
-      country.users << user
+      country.cities << city unless country.city_ids.include?(city.id)
+      country.users << user unless country.user_ids.include?(user.id)
       country.save
       city.country = country
       city.save
