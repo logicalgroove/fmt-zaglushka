@@ -24,7 +24,6 @@ gem 'capistrano-bundler'
 gem 'capistrano-rvm'
 gem 'russian', '~> 0.6.0'
 gem 'kaminari'
-gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
