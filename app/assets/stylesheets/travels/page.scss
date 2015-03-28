@@ -94,6 +94,9 @@ span.line{
   }
 }
 .row{
+  &.last{
+    margin-bottom: 100px !important;
+  }
   .col-content{
     padding: 0 !important;
     margin: 0 !important;
@@ -126,16 +129,15 @@ span.line{
     }
   }
   .tree_row{
-    margin-bottom: 100px;
-
     .desk{
       font-size: 14px !important;
       margin-top: 40px;
     }
+  }
+  .four_row{
     .about{
       .line{
         font-size: 18px;
-
       }
     }
   }
@@ -150,9 +152,6 @@ span.line{
       width: 340px;
       margin: 0 auto;
     }
-  }
-  .last{
-    margin-bottom: 100px !important;
   }
   .travels_list{
     margin: 0 auto;
