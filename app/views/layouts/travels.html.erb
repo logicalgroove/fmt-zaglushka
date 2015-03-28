@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app='fmt_account'>
+<head>
+    <!--- <meta name="viewport" content="initial-scale=1, minimal-ui">
+     <link rel="shortcut icon" type="image/png"  href="/assets/plane.png"/>-->
+    <title>Follow My Travel | Самый простой способ обмениваться впечатлениями о путешествиях</title>
+    <!--<meta charset="utf-8">-->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+    <base href="/">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    "travels/travels.css", :media => "all" %>
+
+    <%= yield :head %>
+    <%= csrf_meta_tags %>
+</head>
+<body >
+<div class="main">
+    <div class="navbar fmt-grey-bg fmt-header" role="navigation">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fmt-header-wrapper-content">
+            <div class="navbar-header">
+                <%= link_to 'http://beta.followmytravel.com', class:"navbar-brand" do %>
+                    <%= image_tag asset_path('logo_new.png') %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="container" ng-controller="mainCtrl">
+        <%= yield %>
+    </div>
+</div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '366799593338597',
+            xfbml      : true,
+            version    : 'v2.1'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+</script>
+</body>
+</html>

@@ -1,6 +1,9 @@
 Zaglushka::Application.routes.draw do
 
   root :to => 'welcome#index'
+
+  get '75daysofeurope', to: 'welcome#travels'
+
   match 's/:id' => 'shorts#show', :as => 's_id'
 
   resources :users do

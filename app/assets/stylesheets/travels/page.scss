@@ -1,0 +1,312 @@
+@import "media_queries";
+
+html{
+  height: 100%;
+  body{
+    min-width: 320px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color:  #3c4a65 !important;
+  }
+  ul{
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+  }
+  a{
+    color:  #3c4a65 !important;
+    &:hover{
+      color: #74f8ef !important;
+
+    }
+  }
+}
+.row{
+  margin-bottom: 30px !important;
+}
+.main{
+  background: #f4f4f4;
+}
+.overlay{
+  background: rgba(61, 74, 102, 0.5);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  .overlay_desk{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 100;
+    display: inline-block;
+    margin-top: 25px;
+    .red{
+      color:#eb4248;
+    }
+    .lg-size{
+      font-size: 50px;
+    }
+  }
+}
+.navbar-header{
+  height: 90px;
+  overflow: hidden;
+  .navbar-brand{
+    height: 100%;
+    img{
+      height: 100%;
+    }
+  }
+}
+span.line{
+  display: block;
+  font-size: 20px; /* Приближение из-за подстановки шрифтов */
+  font-weight: 300;
+  line-height: 29.137px; /* Приближение из-за подстановки шрифтов */
+  text-align: center;
+}
+.header{
+  text-align: center;
+  margin: 10px 0;
+  margin-bottom: 30px;
+  span{
+    display: inline-block;
+    border-width: 1px;
+    border-bottom-color: #74f8ef !important;
+    border-top-color: #74f8ef !important;
+    border: 2px solid;
+    border-left: none;
+    border-right: none;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 41.909px;
+    text-align: center;
+    width: 300px;
+    text-transform: uppercase;
+  }
+}
+.row{
+  .col-content{
+    padding: 0 !important;
+    margin: 0 !important;
+    &.about{
+      background: #fff;
+      font-size: 15px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 300;
+      line-height: 25.453px; /* Приближение из-за подстановки шрифтов */
+      text-align: center;
+      padding: 40px 45px !important;
+      height: 100%;
+    }
+  }
+  .first_row{
+    height: 460px;
+    img{
+      width: 100%;
+    }
+  }
+  .second_row{
+    .about{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .last{
+      margin-bottom: 10px !important;
+    }
+    img{
+      width: 100%;
+    }
+  }
+  .tree_row{
+    .desk{
+      font-size: 14px !important;
+      margin-top: 40px;
+    }
+  }
+  .last{
+    margin-bottom: 100px !important;
+  }
+  .travels_list{
+    margin: 0 auto;
+    width: 434px;
+    text-align: left !important;
+    .line{
+      text-align: left;
+      display: inline-block;
+      &.active:not(.noborder){
+        border: 2px solid #eb4248;
+
+
+      }
+      &.active{
+        position: relative;
+        padding: 5px 10px;
+        &:after{
+          content:"";
+          position: absolute;
+          background: image-url('travelers/map_marker.png');
+          right: -35px;
+          margin: 0 auto;
+          width: 24px;
+          height: 35px;
+          top: 0px;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+.composer.clearfix.mainCommentForm{
+  background: #f4f4f4;
+  border: none;
+}
+
+@include max-screen(320px){
+  .navbar-header{
+    .navbar-brand{
+      width: 100%;
+      height: auto;
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .row{
+    .first_row{
+      height: auto;
+      .overlay{
+        .overlay_desk{
+          font-size: 20px;
+          .lg-size{
+            font-size: 25px;
+          }
+        }
+      }
+      .col-content{
+        &.about{
+          padding: 10px 15px !important;
+        }
+
+      }
+    }
+    .second_row{
+      img{
+        width: 100%;
+      }
+      div{
+        padding: 0 !important;
+      }
+      .col-xs-12:last-child{
+        margin-top: 15px;
+      }
+      .soc_list{
+        margin-left: 5px !important;
+      }
+    }
+    .tree_row{
+      padding: 0;
+      .about{
+        padding: 0;
+      }
+    }
+  }
+  .header{
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    span{
+      width: 100%;
+    }
+  }
+  .travels_list{
+    width:320px !important;
+  }
+  span.line{
+    font-size: 15px;
+  }
+}
+
+@include screen(321px, 483px){
+  .navbar-header{
+    .navbar-brand{
+      width: 100%;
+      height: auto;
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .row{
+    .first_row{
+      height: auto;
+      .overlay{
+        .overlay_desk{
+          font-size: 20px;
+          .lg-size{
+            font-size: 25px;
+          }
+        }
+      }
+      .col-content{
+        &.about{
+          padding: 10px 15px !important;
+        }
+
+      }
+    }
+    .second_row{
+      img{
+        width: 100%;
+      }
+      div{
+        padding: 0 !important;
+      }
+      .col-xs-12:last-child{
+        margin-top: 15px;
+      }
+      .soc_list{
+        margin-left: 5px !important;
+      }
+    }
+    .tree_row{
+      padding: 0;
+      .about{
+        padding: 0;
+      }
+    }
+  }
+  .header{
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    span{
+      width: 100%;
+    }
+  }
+  .travels_list{
+    width:320px !important;
+  }
+  span.line{
+    font-size: 15px;
+  }
+}
+
+@include screen(484px, 767px){
+  .navbar-header{
+    .navbar-brand{
+      height: 100%;
+      img{
+        height: 100%;
+      }
+    }
+  }
+}
