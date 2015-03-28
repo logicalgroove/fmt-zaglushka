@@ -31,6 +31,12 @@ html{
 .main{
   background: #f4f4f4;
 }
+.red{
+  color:#eb4248;
+}
+.bold{
+  font-weight: 400;
+}
 .overlay{
   background: rgba(61, 74, 102, 0.5);
   position: absolute;
@@ -45,9 +51,6 @@ html{
     font-weight: 100;
     display: inline-block;
     margin-top: 25px;
-    .red{
-      color:#eb4248;
-    }
     .lg-size{
       font-size: 50px;
     }
@@ -123,9 +126,29 @@ span.line{
     }
   }
   .tree_row{
+    margin-bottom: 100px;
+
     .desk{
       font-size: 14px !important;
       margin-top: 40px;
+    }
+    .about{
+      .line{
+        font-size: 18px;
+
+      }
+    }
+  }
+  &.subscribe_row{
+    .col-content.about{
+      background: transparent !important;
+      font-size: 18px !important;
+      padding: 0 !important;
+      margin-bottom: 20px !important;
+    }
+    .fb_subscribe{
+      width: 340px;
+      margin: 0 auto;
     }
   }
   .last{
@@ -138,10 +161,13 @@ span.line{
     .line{
       text-align: left;
       display: inline-block;
+      line-height: 35px;
+
       &.active:not(.noborder){
         border: 2px solid #eb4248;
-
-
+      }
+      &.noborder{
+        padding-left: 0 !important;
       }
       &.active{
         position: relative;

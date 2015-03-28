@@ -1,6 +1,7 @@
 Zaglushka::Application.routes.draw do
 
-  root :to => 'welcome#index'
+  #root :to => 'welcome#index'
+  root :to => 'welcome#travels'
 
   get '75daysofeurope', to: 'welcome#travels'
 

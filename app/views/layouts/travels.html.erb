@@ -3,10 +3,14 @@
 <head>
     <!--- <meta name="viewport" content="initial-scale=1, minimal-ui">
      <link rel="shortcut icon" type="image/png"  href="/assets/plane.png"/>-->
-    <title>Follow My Travel | Самый простой способ обмениваться впечатлениями о путешествиях</title>
+    <title>Follow My Travel | 75 days of Europe</title>
     <!--<meta charset="utf-8">-->
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
-    <base href="/">
+  <meta content="75 days of Europe" property="og:title">
+  <meta content="Следи за нашими передвижениями по Европе и советуй все самое классное - только то, что тебе самому понравилось в этих городах!" property="og:description">
+  <meta content="Follow My Travel" property="og:site_name">
+  <meta content="<%= request.original_url+image_path('travelers/75days.jpg') %>" property="og:image">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+  <base href="/">
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "travels", :media => "all" %>
