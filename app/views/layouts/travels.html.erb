@@ -51,5 +51,6 @@
     }(document, 'script', 'facebook-jssdk'));
 
 </script>
+<%= render :partial => 'shared/ga' if Rails.env.production? %>
 </body>
 </html>
