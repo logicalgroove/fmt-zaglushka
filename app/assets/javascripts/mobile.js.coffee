@@ -9,4 +9,3 @@ $ ->
     , "slow", ->
       $('.email_form').show()
       $('#user_email').focus()
-    $('.invite_final').hide()
