@@ -40,12 +40,7 @@
   - if is_logged_in
     = link_to 'Моя карта готова', '#', class: "btn finish_my_map #{'hide' unless user.cities?}"
   - else
-    = link_to "Создай свою карту!", '#', :class => 'btn btn-large invite_final make_your_map'
-    .text_container.dialog.hide
-      %h2.align-center Уже скоро!
-      %h3.align-center Проект в стадии разработки, но уже сегодня ты можешь запросить инвайт и создать свою карту путешествий
-      .users.email_form
-        = render 'users/form'
+    = link_to "Создай свою карту!", 'http://beta.followmytravel.com', :class => 'btn btn-large invite_final make_your_map'
 
   .dialog.share_container.hide
     %h2 Поделись своей картой с миром!

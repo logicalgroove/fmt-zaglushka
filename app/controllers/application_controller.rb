@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :is_logged_in
   helper_method :mobile?
+  before_action :check
+
+  def check
+    unless  params["controller"] == "welcome" && params['action'] == 'travels'
+      redirect_to 'http://beta.followmytravel.com'
+    end
+  end
 
   private
   if Rails.env.test?
