@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :is_logged_in
   helper_method :mobile?
+=begin
   before_action :check
 
   def check
@@ -10,6 +11,8 @@ class ApplicationController < ActionController::Base
       redirect_to 'http://beta.followmytravel.com'
     end
   end
+=end
+
 
   private
   if Rails.env.test?
