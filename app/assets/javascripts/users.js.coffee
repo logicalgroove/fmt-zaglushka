@@ -148,8 +148,6 @@ $ ->
         $('#city_name_auto').focus()
       , 100
 
-  $('.invite_final').click ->
-    $('.text_container').show()
 
   $('.finish_my_map').click ->
     $(this).hide()

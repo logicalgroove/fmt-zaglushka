@@ -1,8 +1,4 @@
 $ ->
-  $('.invite_final').click ->
-    $(this).hide()
-    $('.email_form').show()
-    false
 
   $('#new_user').submit  ->
     regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
